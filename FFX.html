@@ -4,19 +4,100 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <meta name="theme-color" content="#ffffff">
+<meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+<meta http-equiv="Pragma" content="no-cache">
+<meta http-equiv="Expires" content="0">
 <link rel="icon" type="image/jpeg" href="Main logo.jpg">
 <link rel="shortcut icon" href="Main logo.jpg">
 <link rel="apple-touch-icon" href="Main logo.jpg">
 <meta property="og:image" content="Main logo.jpg">
 <title>Nickname</title>
 <script>
-// account.js কখনো পুরোনো (cache) কপি থেকে না আসুক: সার্ভারে হলে প্রতিবার নতুন করে আনবে
-(function(){
-  var s = (location.protocol.indexOf('http') === 0) ? 'account.js?v=' + Date.now() : 'account.js';
-  document.write('<script src="' + s + '"><\/script>');
+// =======================================================
+// INSTANT CONFIG LOADER & CACHE-BUSTER (Render Live Update)
+// =======================================================
+window.ACCOUNT_CONFIG = window.ACCOUNT_CONFIG || {};
+
+function syncAccountLinks() {
+  var siteName = (typeof website_name !== 'undefined' ? website_name : (window.website_name || (window.ACCOUNT_CONFIG && window.ACCOUNT_CONFIG.websiteName) || '')).trim();
+  if (!siteName) siteName = 'Nickname';
+
+  document.title = siteName;
+  document.querySelectorAll('[data-site-name]').forEach(function(el) {
+    el.textContent = siteName;
+  });
+  document.querySelectorAll('[data-site-logo]').forEach(function(el) {
+    el.alt = siteName;
+  });
+
+  var tgCh = (typeof telegram_channel_link !== 'undefined' ? telegram_channel_link : (window.telegram_channel_link || (window.ACCOUNT_CONFIG && window.ACCOUNT_CONFIG.telegramChannel) || '')).trim();
+  var tgGrp = (typeof telegram_group_link !== 'undefined' ? telegram_group_link : (window.telegram_group_link || (window.ACCOUNT_CONFIG && window.ACCOUNT_CONFIG.telegramGroup) || '')).trim();
+  var ytCh = (typeof youtube_channel_link !== 'undefined' ? youtube_channel_link : (window.youtube_channel_link || (window.ACCOUNT_CONFIG && window.ACCOUNT_CONFIG.youtubeChannel) || '')).trim();
+
+  function sanitize(url, placeholder) {
+    if (!url) return '';
+    url = url.trim();
+    if (!url || url.toLowerCase() === placeholder.toLowerCase() || url === '#' || (url.indexOf(' ') !== -1 && !url.startsWith('http'))) {
+      return '';
+    }
+    if (!/^https?:\/\//i.test(url)) {
+      return 'https://' + url;
+    }
+    return url;
+  }
+
+  var validTgCh = sanitize(tgCh, 'telegram channel link');
+  var validTgGrp = sanitize(tgGrp, 'telegram group link');
+  var validYtCh = sanitize(ytCh, 'YouTube channel link');
+
+  function bindLinks(selector, url) {
+    document.querySelectorAll(selector).forEach(function(el) {
+      if (url) {
+        el.href = url;
+        el.target = '_blank';
+        el.rel = 'noopener noreferrer';
+        el.onclick = null;
+      } else {
+        el.href = '#';
+        el.removeAttribute('target');
+        el.onclick = function(e) {
+          e.preventDefault();
+        };
+      }
+    });
+  }
+
+  bindLinks('[data-link="telegram-channel"]', validTgCh);
+  bindLinks('[data-link="telegram-group"]', validTgGrp);
+  bindLinks('[data-link="youtube-channel"]', validYtCh);
+
+  // নোটিফিকেশন পপআপের লেখা (account.js এর notification_text)
+  var note = (typeof notification_text !== 'undefined' ? notification_text : (window.notification_text || (window.ACCOUNT_CONFIG && window.ACCOUNT_CONFIG.notificationText) || '')).toString();
+  note = note.replace(/\\n/g, '\n').trim();
+  var popEl = document.getElementById('popText');
+  if (popEl && note) {
+    popEl.textContent = '';
+    note.split(/\r?\n/).forEach(function(line, i){
+      if (i) popEl.appendChild(document.createElement('br'));
+      popEl.appendChild(document.createTextNode(line));
+    });
+  }
+}
+
+window.syncAccountLinks = syncAccountLinks;
+
+// Dynamically inject account.js with unique cache-busting timestamp
+(function() {
+  var buster = Date.now() + '_' + Math.floor(Math.random() * 1000000);
+  var s = document.createElement('script');
+  s.src = (location.protocol.indexOf('http') === 0) ? 'account.js?v=' + buster : 'account.js';
+  s.async = false;
+  s.onload = function() {
+    if (typeof syncAccountLinks === 'function') syncAccountLinks();
+  };
+  (document.head || document.documentElement).appendChild(s);
 })();
 </script>
-<script>if(typeof website_name!=='undefined'&&website_name.trim())document.title=website_name.trim();</script>
 <style>
 :root{--bg:#f5f8ff;--card:#fff;--bd:#e1e8f5;--v:#2563eb;--v2:#3b82f6;--gold:#93c5fd;--tx:#0f172a;--mu:#666b85;--g:linear-gradient(135deg,#3b82f6,#1d4ed8)}
 *{box-sizing:border-box;margin:0;padding:0;-webkit-tap-highlight-color:transparent}
@@ -752,30 +833,83 @@ function syncAccountLinks() {
 syncAccountLinks();
 document.addEventListener('DOMContentLoaded', syncAccountLinks);
 
-// Fallback plain-text fetch (works on HTTP/HTTPS servers or supported environments)
-if (window.location.protocol.indexOf('http') === 0) {
-  fetch('account.js').then(function(r){ return r.text(); }).then(function(txt){
-    var lines = txt.split(/\r?\n/).map(function(l){ return l.trim(); }).filter(function(l){
-      return l && !l.startsWith('//') && !l.startsWith('/*') && !l.startsWith('*');
-    });
-    var name = '', ch = '', grp = '', yt = '';
-    var mName = txt.match(/website_name\s*=\s*["']([^"']+)["']/i);
-    var mCh = txt.match(/telegram_channel_link\s*=\s*["']([^"']+)["']/i);
-    var mGrp = txt.match(/telegram_group_link\s*=\s*["']([^"']+)["']/i);
-    var mYt = txt.match(/youtube_channel_link\s*=\s*["']([^"']+)["']/i);
-    if (mName) name = mName[1];
-    if (mCh) ch = mCh[1];
-    if (mGrp) grp = mGrp[1];
-    if (mYt) yt = mYt[1];
-    if (name) window.website_name = name;
-    if (ch) window.telegram_channel_link = ch;
-    if (grp) window.telegram_group_link = grp;
-    if (yt) window.youtube_channel_link = yt;
-    var mNote = txt.match(/notification_text\s*=\s*(["'`])([\s\S]*?)\1\s*;/i);
-    if (mNote) window.notification_text = mNote[2];
-    syncAccountLinks();
-  }).catch(function(){});
+// Instant Live Fetch with strict no-cache headers to bypass browser and CDN cache
+function fetchFreshAccountConfig() {
+  if (window.location.protocol.indexOf('http') !== 0) return;
+  var buster = Date.now() + '_' + Math.floor(Math.random() * 1000000);
+  var url = 'account.js?v=' + buster + '&_t=' + Math.random();
+  fetch(url, {
+    method: 'GET',
+    cache: 'no-store',
+    headers: {
+      'Cache-Control': 'no-cache, no-store, must-revalidate',
+      'Pragma': 'no-cache',
+      'Expires': '0'
+    }
+  }).then(function(res){
+    if (!res.ok) return '';
+    return res.text();
+  }).then(function(txt){
+    if (!txt) return;
+
+    // 1. Try direct evaluation
+    var parsed = false;
+    try {
+      var runner = new Function(txt + '\n;return {' +
+        'website_name: (typeof website_name !== "undefined" ? website_name : null),' +
+        'telegram_channel_link: (typeof telegram_channel_link !== "undefined" ? telegram_channel_link : null),' +
+        'telegram_group_link: (typeof telegram_group_link !== "undefined" ? telegram_group_link : null),' +
+        'youtube_channel_link: (typeof youtube_channel_link !== "undefined" ? youtube_channel_link : null),' +
+        'notification_text: (typeof notification_text !== "undefined" ? notification_text : null)' +
+      '};');
+      var cfg = runner();
+      if (cfg) {
+        if (cfg.website_name !== null) window.website_name = cfg.website_name;
+        if (cfg.telegram_channel_link !== null) window.telegram_channel_link = cfg.telegram_channel_link;
+        if (cfg.telegram_group_link !== null) window.telegram_group_link = cfg.telegram_group_link;
+        if (cfg.youtube_channel_link !== null) window.youtube_channel_link = cfg.youtube_channel_link;
+        if (cfg.notification_text !== null) window.notification_text = cfg.notification_text;
+        parsed = true;
+      }
+    } catch(e) {}
+
+    // 2. Fallback regex extraction (supports double quotes, single quotes, and backticks without needing semicolons)
+    if (!parsed) {
+      var extractProp = function(prop) {
+        var re = new RegExp(prop + '\\s*=\\s*([`"\'])([\\s\\S]*?)\\1', 'i');
+        var m = txt.match(re);
+        return m ? m[2].trim() : null;
+      };
+      var name = extractProp('website_name');
+      var tgCh = extractProp('telegram_channel_link');
+      var tgGrp = extractProp('telegram_group_link');
+      var ytCh = extractProp('youtube_channel_link');
+      var note = extractProp('notification_text');
+
+      if (name !== null) window.website_name = name;
+      if (tgCh !== null) window.telegram_channel_link = tgCh;
+      if (tgGrp !== null) window.telegram_group_link = tgGrp;
+      if (ytCh !== null) window.youtube_channel_link = ytCh;
+      if (note !== null) window.notification_text = note;
+    }
+
+    if (typeof syncAccountLinks === 'function') syncAccountLinks();
+  }).catch(function(err){
+    console.warn('Account config live fetch notice:', err);
+  });
 }
+
+fetchFreshAccountConfig();
+document.addEventListener('DOMContentLoaded', function(){
+  if (typeof syncAccountLinks === 'function') syncAccountLinks();
+  fetchFreshAccountConfig();
+});
+window.addEventListener('load', function(){
+  if (typeof syncAccountLinks === 'function') syncAccountLinks();
+});
+
+// Render-এ ডিপ্লয় হওয়ার সাথে সাথে যাতে ভিজিটরদের পেজ রিফ্রেশ না করলেও আপডেট হয়ে যায় (প্রতি ১৫ সেকেন্ডে চেক করবে)
+setInterval(fetchFreshAccountConfig, 15000);
 
 // ==========================================
 // ==========================================
@@ -1039,7 +1173,11 @@ if (window.location.protocol.indexOf('http') === 0) {
 // ==========================================
 (function(){
   var pop = document.getElementById('pop');
-  function openP(){ pop.classList.add('show'); document.body.style.overflow='hidden'; }
+  function openP(){
+    if (typeof window.syncAccountLinks === 'function') window.syncAccountLinks();
+    pop.classList.add('show');
+    document.body.style.overflow='hidden';
+  }
   function closeP(){ pop.classList.remove('show'); document.body.style.overflow=''; }
   document.getElementById('pclose').onclick = closeP;
   pop.addEventListener('click', function(e){ if (e.target === pop) closeP(); });
@@ -1047,6 +1185,7 @@ if (window.location.protocol.indexOf('http') === 0) {
   setTimeout(openP, 500);
 
   document.getElementById('fb').onclick = function(){
+    if (typeof window.syncAccountLinks === 'function') window.syncAccountLinks();
     document.getElementById('fab').classList.toggle('open');
   };
 })();
