@@ -1,22 +1,22 @@
 // =======================================================
-// WEBSITE NAME (NICKNAME)
+// WEBSITE NAME 
 // =======================================================
 var website_name = "TuhinTopupBD;
 
 // =======================================================
 // TELEGRAM CHANNEL LINK
 // =======================================================
-var telegram_channel_link =https://t.me/TuhinTopupBD
+var telegram_channel_link 
 
 // =======================================================
 // TELEGRAM GROUP LINK
 // =======================================================
-var telegram_group_link = https://t.me/TuhinTopupBD
+var telegram_group_link =
 
 // =======================================================
 // YOUTUBE CHANNEL LINK
 // =======================================================
-var youtube_channel_link = "YouTube.comTuhinTopupBD
+var youtube_channel_link = 
 
 // =======================================================
 // NOTIFICATION TEXT
