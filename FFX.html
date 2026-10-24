@@ -394,6 +394,10 @@ footer .about h2{margin:0 0 6px;font-size:24px;font-weight:800;letter-spacing:-.
 .pv-help p{margin-top:3px;font-size:14px;color:#2b2b2b}
 .pv-help .vb{width:19px;height:19px;flex-shrink:0}
 #uidView{padding-left:10px;padding-right:10px;padding-bottom:120px}
+#wmView{padding-left:10px;padding-right:10px;padding-bottom:120px}
+#wlView{padding-left:10px;padding-right:10px;padding-bottom:120px}
+#luView{padding-left:10px;padding-right:10px;padding-bottom:120px}
+#inView{padding-left:10px;padding-right:10px;padding-bottom:120px}
 .how{display:inline-flex;align-items:center;gap:8px;margin-top:14px;padding:4px 2px;font-size:14px;font-weight:700;color:var(--v)}
 .how svg{font-size:18px;flex-shrink:0}
 .how .ar{font-size:17px;stroke-width:2.4}
@@ -427,6 +431,102 @@ html,body,.pk,.po,.btn,.pay,.q,.card,.nav a,.pv-back{touch-action:manipulation}
 #uidView .pk span,#uidView .pk b{pointer-events:none}
 #uidView .pk:active{transform:none;background:#eff5ff}
 #uidView .pk{-webkit-appearance:none;appearance:none;font-family:inherit}
+
+/* WEEKLY/MONTHLY: compact, centered price cards */
+#wmPkGrid{gap:8px;margin:-3px}
+#wmView .pk{min-height:64px;padding:8px 6px;gap:3px;justify-content:center;border-radius:12px;border-width:1.5px;box-shadow:0 2px 6px -4px rgba(20,40,90,.25)}
+#wmView .pk span{font-size:14.5px;font-weight:700;line-height:1.3;color:#0f1f4d;letter-spacing:-.1px}
+#wmView .pk b{font-size:13px;font-weight:700;line-height:1.3;color:var(--v)}
+#wmView .pk.on{background:linear-gradient(160deg,#eff5ff,#fff);box-shadow:0 0 0 3px rgba(37,99,235,.15),0 8px 16px -10px rgba(37,99,235,.7)}
+#wmView .pk.on:after{top:-7px;right:-5px}
+#wmView .pk span,#wmView .pk b{pointer-events:none}
+#wmView .pk:active{transform:none;background:#eff5ff}
+#wmView .pk{-webkit-appearance:none;appearance:none;font-family:inherit}
+
+/* WEEKLY LITE: compact, centered price cards */
+#wlPkGrid{gap:8px;margin:-3px}
+#wlView .pk{min-height:64px;padding:8px 6px;gap:3px;justify-content:center;border-radius:12px;border-width:1.5px;box-shadow:0 2px 6px -4px rgba(20,40,90,.25)}
+#wlView .pk span{font-size:14.5px;font-weight:700;line-height:1.3;color:#0f1f4d;letter-spacing:-.1px}
+#wlView .pk b{font-size:13px;font-weight:700;line-height:1.3;color:var(--v)}
+#wlView .pk.on{background:linear-gradient(160deg,#eff5ff,#fff);box-shadow:0 0 0 3px rgba(37,99,235,.15),0 8px 16px -10px rgba(37,99,235,.7)}
+#wlView .pk.on:after{top:-7px;right:-5px}
+#wlView .pk span,#wlView .pk b{pointer-events:none}
+#wlView .pk:active{transform:none;background:#eff5ff}
+#wlView .pk{-webkit-appearance:none;appearance:none;font-family:inherit}
+
+/* ===== account menu panel ===== */
+.acc{position:fixed;inset:0;z-index:44;background:rgba(10,22,55,.5);opacity:0;visibility:hidden;transition:opacity .3s,visibility 0s .3s}
+.acc.show{opacity:1;visibility:visible;transition:opacity .3s,visibility 0s}
+.acc-in{position:absolute;top:0;right:0;bottom:0;width:64%;max-width:340px;display:flex;flex-direction:column;background:#fff;box-shadow:-12px 0 36px -10px rgba(10,22,55,.35);transform:translateX(100%);transition:transform .38s cubic-bezier(.2,1,.3,1);overflow-y:auto;-webkit-overflow-scrolling:touch;padding-bottom:calc(100px + env(safe-area-inset-bottom,0px))}
+.acc.show .acc-in{transform:none}
+.acc-top{position:relative;display:flex;flex-direction:column;align-items:center;padding:calc(14px + env(safe-area-inset-top,0px)) 12px 14px;background:#fff;border-bottom:1px solid var(--bd)}
+.acc-x{display:none}
+.acc-user{display:flex;align-items:center;gap:10px;width:100%}
+.acc-av{width:52px;height:52px;border-radius:14px;padding:2.5px;background:var(--g);box-shadow:0 6px 14px -6px rgba(37,99,235,.6);flex-shrink:0}
+.acc-av div{width:100%;height:100%;border-radius:11.5px;overflow:hidden;background:#eff6ff;display:grid;place-items:center;color:var(--v);font-size:24px}
+.acc-av img{width:100%;height:100%;object-fit:cover;display:block}
+.acc-nm{min-width:0;flex:1}
+.acc-nm b{display:block;font-size:15px;font-weight:800;letter-spacing:-.2px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.acc-nm span{display:block;margin-top:2px;font-size:12px;color:var(--mu);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.acc-lo{display:inline-flex;align-items:center;gap:7px;margin-top:12px;padding:8px 18px;border:0;border-radius:10px;background:var(--g);color:#fff;font-family:inherit;font-size:13.5px;font-weight:700;cursor:pointer;box-shadow:0 8px 18px -8px rgba(37,99,235,.85);transition:.2s}
+.acc-lo:active{transform:scale(.97)}
+.acc-lo svg{font-size:16px;stroke-width:2.2}
+.acc-list{background:#fff;border-bottom:1px solid var(--bd)}
+.acc-it{display:flex;align-items:center;gap:13px;padding:14px 14px;font-size:14.5px;font-weight:700;color:var(--tx);transition:.15s}
+.acc-it svg{font-size:22px;color:#1e293b;flex-shrink:0}
+.acc-it:active{background:#eff5ff}
+.acc-it.on{color:var(--v)}
+.acc-it.on svg{color:var(--v)}
+.acc-sup{display:flex;align-items:center;justify-content:center;gap:8px;margin:14px auto 0;padding:11px 26px;border-radius:12px;background:var(--g);color:#fff;font-size:14.5px;font-weight:700;box-shadow:0 10px 20px -10px rgba(37,99,235,.8)}
+.acc-sup svg{font-size:19px}
+.acc-sup:active{transform:scale(.97)}
+/* LEVEL UP PASS: compact, centered price cards */
+#luPkGrid{gap:8px;margin:-3px}
+#luView .pk{min-height:64px;padding:8px 6px;gap:3px;justify-content:center;border-radius:12px;border-width:1.5px;box-shadow:0 2px 6px -4px rgba(20,40,90,.25)}
+#luView .pk span{font-size:14.5px;font-weight:700;line-height:1.3;color:#0f1f4d;letter-spacing:-.1px}
+#luView .pk b{font-size:13px;font-weight:700;line-height:1.3;color:var(--v)}
+#luView .pk.on{background:linear-gradient(160deg,#eff5ff,#fff);box-shadow:0 0 0 3px rgba(37,99,235,.15),0 8px 16px -10px rgba(37,99,235,.7)}
+#luView .pk.on:after{top:-7px;right:-5px}
+#luView .pk span,#luView .pk b{pointer-events:none}
+#luView .pk:active{transform:none;background:#eff5ff}
+#luView .pk{-webkit-appearance:none;appearance:none;font-family:inherit}
+
+/* ===== account menu panel ===== */
+.acc{position:fixed;inset:0;z-index:44;background:rgba(10,22,55,.5);opacity:0;visibility:hidden;transition:opacity .3s,visibility 0s .3s}
+.acc.show{opacity:1;visibility:visible;transition:opacity .3s,visibility 0s}
+.acc-in{position:absolute;top:0;right:0;bottom:0;width:64%;max-width:340px;display:flex;flex-direction:column;background:#fff;box-shadow:-12px 0 36px -10px rgba(10,22,55,.35);transform:translateX(100%);transition:transform .38s cubic-bezier(.2,1,.3,1);overflow-y:auto;-webkit-overflow-scrolling:touch;padding-bottom:calc(100px + env(safe-area-inset-bottom,0px))}
+.acc.show .acc-in{transform:none}
+.acc-top{position:relative;display:flex;flex-direction:column;align-items:center;padding:calc(14px + env(safe-area-inset-top,0px)) 12px 14px;background:#fff;border-bottom:1px solid var(--bd)}
+.acc-x{display:none}
+.acc-user{display:flex;align-items:center;gap:10px;width:100%}
+.acc-av{width:52px;height:52px;border-radius:14px;padding:2.5px;background:var(--g);box-shadow:0 6px 14px -6px rgba(37,99,235,.6);flex-shrink:0}
+.acc-av div{width:100%;height:100%;border-radius:11.5px;overflow:hidden;background:#eff6ff;display:grid;place-items:center;color:var(--v);font-size:24px}
+.acc-av img{width:100%;height:100%;object-fit:cover;display:block}
+.acc-nm{min-width:0;flex:1}
+.acc-nm b{display:block;font-size:15px;font-weight:800;letter-spacing:-.2px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.acc-nm span{display:block;margin-top:2px;font-size:12px;color:var(--mu);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.acc-lo{display:inline-flex;align-items:center;gap:7px;margin-top:12px;padding:8px 18px;border:0;border-radius:10px;background:var(--g);color:#fff;font-family:inherit;font-size:13.5px;font-weight:700;cursor:pointer;box-shadow:0 8px 18px -8px rgba(37,99,235,.85);transition:.2s}
+.acc-lo:active{transform:scale(.97)}
+.acc-lo svg{font-size:16px;stroke-width:2.2}
+.acc-list{background:#fff;border-bottom:1px solid var(--bd)}
+.acc-it{display:flex;align-items:center;gap:13px;padding:14px 14px;font-size:14.5px;font-weight:700;color:var(--tx);transition:.15s}
+.acc-it svg{font-size:22px;color:#1e293b;flex-shrink:0}
+.acc-it:active{background:#eff5ff}
+.acc-it.on{color:var(--v)}
+.acc-it.on svg{color:var(--v)}
+.acc-sup{display:flex;align-items:center;justify-content:center;gap:8px;margin:14px auto 0;padding:11px 26px;border-radius:12px;background:var(--g);color:#fff;font-size:14.5px;font-weight:700;box-shadow:0 10px 20px -10px rgba(37,99,235,.8)}
+.acc-sup svg{font-size:19px}
+.acc-sup:active{transform:scale(.97)}
+/* INDONESIA SERVER: compact, centered price cards */
+#inPkGrid{gap:8px;margin:-3px}
+#inView .pk{min-height:64px;padding:8px 6px;gap:3px;justify-content:center;border-radius:12px;border-width:1.5px;box-shadow:0 2px 6px -4px rgba(20,40,90,.25)}
+#inView .pk span{font-size:14.5px;font-weight:700;line-height:1.3;color:#0f1f4d;letter-spacing:-.1px}
+#inView .pk b{font-size:13px;font-weight:700;line-height:1.3;color:var(--v)}
+#inView .pk.on{background:linear-gradient(160deg,#eff5ff,#fff);box-shadow:0 0 0 3px rgba(37,99,235,.15),0 8px 16px -10px rgba(37,99,235,.7)}
+#inView .pk.on:after{top:-7px;right:-5px}
+#inView .pk span,#inView .pk b{pointer-events:none}
+#inView .pk:active{transform:none;background:#eff5ff}
+#inView .pk{-webkit-appearance:none;appearance:none;font-family:inherit}
 
 /* ===== account menu panel ===== */
 .acc{position:fixed;inset:0;z-index:44;background:rgba(10,22,55,.5);opacity:0;visibility:hidden;transition:opacity .3s,visibility 0s .3s}
@@ -521,10 +621,10 @@ html,body,.pk,.po,.btn,.pay,.q,.card,.nav a,.pv-back{touch-action:manipulation}
   <div class="grid">
     <a class="card" href="#ff-likes" data-open="ff-likes"><div class="thumb ph"><img src="FF LIKES.jpg" alt="FF Likes" loading="lazy" decoding="async"></div><p>FF Likes</p></a>
     <a class="card" href="#uid-topup" data-open="uid-topup"><div class="thumb ph"><img src="UID TOPUP (BD).jpg" alt="UID Topup (BD)" loading="lazy" decoding="async"></div><p>UID Topup (BD)</p></a>
-    <a class="card" href="#"><div class="thumb ph"><img src="WEEKLYMONTHLY.jpg" alt="Weekly/Monthly" loading="lazy" decoding="async"></div><p>Weekly/Monthly</p></a>
-    <a class="card" href="#"><div class="thumb ph"><img src="WEEKLY LITE.jpg" alt="Weekly Lite" loading="lazy" decoding="async"></div><p>Weekly Lite</p></a>
-    <a class="card" href="#"><div class="thumb ph"><img src="LEVEL UP PASS.jpg" alt="Level Up Pass" loading="lazy" decoding="async"></div><p>Level Up Pass</p></a>
-    <a class="card" href="#"><div class="thumb ph"><img src="INDONESIA SERVER.jpg" alt="Indonesia Server" loading="lazy" decoding="async"></div><p>Indonesia Server</p></a>
+    <a class="card" href="#weekly-monthly" data-open="weekly-monthly"><div class="thumb ph"><img src="WEEKLYMONTHLY.jpg" alt="Weekly/Monthly" loading="lazy" decoding="async"></div><p>Weekly/Monthly</p></a>
+    <a class="card" href="#weekly-lite" data-open="weekly-lite"><div class="thumb ph"><img src="WEEKLY LITE.jpg" alt="Weekly Lite" loading="lazy" decoding="async"></div><p>Weekly Lite</p></a>
+    <a class="card" href="#level-up-pass" data-open="level-up-pass"><div class="thumb ph"><img src="LEVEL UP PASS.jpg" alt="Level Up Pass" loading="lazy" decoding="async"></div><p>Level Up Pass</p></a>
+    <a class="card" href="#indonesia-server" data-open="indonesia-server"><div class="thumb ph"><img src="INDONESIA SERVER.jpg" alt="Indonesia Server" loading="lazy" decoding="async"></div><p>Indonesia Server</p></a>
   </div>
 
 </main>
@@ -657,6 +757,345 @@ html,body,.pk,.po,.btn,.pay,.q,.card,.nav a,.pv-back{touch-action:manipulation}
       <p class="hint need"><svg class="i"><use href="#info"/></svg><span>প্রোডাক্ট কিনতে আপনার প্রয়োজন <b id="uidNeed">0</b> ৳ ।</span></p>
       <p class="hint warnx" id="uidLoginWarn"><svg class="i"><use href="#info"/></svg><span>Please Login To Purchase</span></p>
       <a class="btn login" id="uidBuy" href="#">Login</a>
+    </div>
+  </section>
+
+  <section class="pv-box rules">
+    <div class="pv-head rh"><svg class="i"><use href="#doc"/></svg><h2>Rules &amp; Conditions</h2></div>
+    <div class="pv-body">
+      <ul class="rl">
+        <li>সঠিক প্লেয়ার আইডি দিয়ে অর্ডার করুন। ভুল আইডিতে টপআপ হয়ে গেলে কর্তৃপক্ষ দায়ী থাকবে না।</li>
+        <li>অর্ডার করার আগে আইডির নাম চেক করে নিন।</li>
+        <li>টপআপ সম্পন্ন হতে সাধারণত ২ সেকেন্ড থেকে কয়েক মিনিট সময় লাগতে পারে।</li>
+        <li>একবার অর্ডার সাবমিট করার পর বাতিল বা রিফান্ড করা হয় না।</li>
+        <li>যেকোনো সমস্যায় অর্ডারের স্ক্রিনশট সহ টেলিগ্রামে যোগাযোগ করুন।</li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="pv-contact">
+    <h2>Contact Us</h2>
+    <a class="pv-help" href="#" data-link="telegram-channel">
+      <span class="ti"><svg class="f"><use href="#tg"/></svg></span>
+      <span><b>Telegram HelpLine <svg class="vb" viewBox="0 0 24 24"><path fill="#2979ff" d="M22.25 12c0-1.43-.88-2.67-2.19-3.34.46-1.39.2-2.9-.81-3.91s-2.52-1.27-3.91-.81c-.67-1.31-1.91-2.19-3.34-2.19s-2.67.88-3.34 2.19c-1.39-.46-2.9-.2-3.91.81s-1.27 2.52-.81 3.91C2.63 9.33 1.75 10.57 1.75 12s.88 2.67 2.19 3.34c-.46 1.39-.2 2.9.81 3.91s2.52 1.27 3.91.81c.67 1.31 1.91 2.19 3.34 2.19s2.67-.88 3.34-2.19c1.39.46 2.9.2 3.91-.81s1.27-2.52.81-3.91c1.31-.67 2.19-1.91 2.19-3.34z"/><polygon fill="#fff" points="9.65 16.4 5.8 12.55 7.2 11.15 9.65 13.6 16.8 6.45 18.2 7.85"/></svg></b><p>সকাল ৮টা থেকে রাত ১২টা</p></span>
+    </a>
+  </section>
+</main>
+
+<!-- WEEKLY/MONTHLY PAGE -->
+<main class="wrap" id="wmView" hidden>
+  <button class="pv-back" type="button" id="wmBack"><svg class="i"><use href="#arr"/></svg>Back</button>
+
+  <section class="pv-hero">
+    <div class="pv-img"><div class="thumb ph"><img src="WEEKLYMONTHLY.jpg" alt="Weekly/Monthly"></div></div>
+    <div class="pv-info">
+      <h1>WEEKLY/MONTHLY</h1>
+      <span class="pv-pill"><svg viewBox="0 0 24 24"><use href="#bolt"/></svg>২ সেকেন্ডে টপআপ</span>
+    </div>
+  </section>
+
+  <section class="pv-box">
+    <div class="pv-head"><span class="n">1</span><h2>Select Recharge</h2></div>
+    <div class="pv-body">
+      <div class="pk-grid" id="wmPkGrid">
+        <button type="button" class="pk" data-name="WEEKLY" data-price="155"><span>WEEKLY</span><b>BDT 155</b></button>
+        <button type="button" class="pk" data-name="2X WEEKLY" data-price="310"><span>2X WEEKLY</span><b>BDT 310</b></button>
+        <button type="button" class="pk" data-name="3X WEEKLY" data-price="465"><span>3X WEEKLY</span><b>BDT 465</b></button>
+        <button type="button" class="pk" data-name="MONTHLY" data-price="770"><span>MONTHLY</span><b>BDT 770</b></button>
+        <button type="button" class="pk" data-name="2X MONTHLY" data-price="1540"><span>2X MONTHLY</span><b>BDT 1540</b></button>
+        <button type="button" class="pk" data-name="1X WEEKLY+1X MONTHLY" data-price="925"><span>1X WEEKLY+1X MONTHLY</span><b>BDT 925</b></button>
+        <button type="button" class="pk" data-name="3X WEEKLY+1X MONTHLY" data-price="1235"><span>3X WEEKLY+1X MONTHLY</span><b>BDT 1235</b></button>
+      </div>
+      <a class="how" id="wmHow" href="#"><svg class="i"><use href="#ext"/></svg><span>কিভাবে অর্ডার করবেন?</span><svg class="i ar"><use href="#arr"/></svg></a>
+    </div>
+  </section>
+
+  <section class="pv-box">
+    <div class="pv-head"><span class="n">2</span><h2>Account Info</h2></div>
+    <div class="pv-body">
+      <label class="lbl" for="wmInp">এখানে গেমের আইডি কোড দিন</label>
+      <input class="inp" id="wmInp" type="text" inputmode="numeric" autocomplete="off" placeholder="এখানে গেমের আইডি কোড দিন">
+      <button class="btn" type="button" id="wmChk">আপনার গেম আইডির নাম চেক করুন</button>
+      <div class="pname" id="wmPname"></div>
+    </div>
+  </section>
+
+  <section class="pv-box">
+    <div class="pv-head"><span class="n">3</span><h2>Select one option</h2></div>
+    <div class="pv-body">
+      <div class="po-grid" id="wmPo">
+        <div role="button" tabindex="0" class="po on" data-pay="Wallet Pay">
+          <div class="pbx"><img src="wallet.jpg" alt="" onerror="this.style.display='none'"></div>
+          <div class="pft">Wallet Pay</div>
+        </div>
+        <div role="button" tabindex="0" class="po" data-pay="Instant Pay">
+          <div class="pbx"><img src="andmoney.jpg" alt="" onerror="this.style.display='none'"></div>
+          <div class="pft">Instant Pay</div>
+        </div>
+      </div>
+
+      <div class="bal" id="wmBalRow" style="display:none">
+        <svg class="i"><use href="#info"/></svg>
+        <span>আপনার অ্যাকাউন্ট ব্যালেন্স <b>৳ <em id="wmBal">0.00</em></b></span>
+        <button type="button" class="rf" id="wmRf" aria-label="Refresh"><svg class="i"><use href="#refresh"/></svg></button>
+      </div>
+      <p class="hint need"><svg class="i"><use href="#info"/></svg><span>প্রোডাক্ট কিনতে আপনার প্রয়োজন <b id="wmNeed">0</b> ৳ ।</span></p>
+      <p class="hint warnx" id="wmLoginWarn"><svg class="i"><use href="#info"/></svg><span>Please Login To Purchase</span></p>
+      <a class="btn login" id="wmBuy" href="#">Login</a>
+    </div>
+  </section>
+
+  <section class="pv-box rules">
+    <div class="pv-head rh"><svg class="i"><use href="#doc"/></svg><h2>Rules &amp; Conditions</h2></div>
+    <div class="pv-body">
+      <ul class="rl">
+        <li>সঠিক প্লেয়ার আইডি দিয়ে অর্ডার করুন। ভুল আইডিতে টপআপ হয়ে গেলে কর্তৃপক্ষ দায়ী থাকবে না।</li>
+        <li>অর্ডার করার আগে আইডির নাম চেক করে নিন।</li>
+        <li>টপআপ সম্পন্ন হতে সাধারণত ২ সেকেন্ড থেকে কয়েক মিনিট সময় লাগতে পারে।</li>
+        <li>একবার অর্ডার সাবমিট করার পর বাতিল বা রিফান্ড করা হয় না।</li>
+        <li>যেকোনো সমস্যায় অর্ডারের স্ক্রিনশট সহ টেলিগ্রামে যোগাযোগ করুন।</li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="pv-contact">
+    <h2>Contact Us</h2>
+    <a class="pv-help" href="#" data-link="telegram-channel">
+      <span class="ti"><svg class="f"><use href="#tg"/></svg></span>
+      <span><b>Telegram HelpLine <svg class="vb" viewBox="0 0 24 24"><path fill="#2979ff" d="M22.25 12c0-1.43-.88-2.67-2.19-3.34.46-1.39.2-2.9-.81-3.91s-2.52-1.27-3.91-.81c-.67-1.31-1.91-2.19-3.34-2.19s-2.67.88-3.34 2.19c-1.39-.46-2.9-.2-3.91.81s-1.27 2.52-.81 3.91C2.63 9.33 1.75 10.57 1.75 12s.88 2.67 2.19 3.34c-.46 1.39-.2 2.9.81 3.91s2.52 1.27 3.91.81c.67 1.31 1.91 2.19 3.34 2.19s2.67-.88 3.34-2.19c1.39.46 2.9.2 3.91-.81s1.27-2.52.81-3.91c1.31-.67 2.19-1.91 2.19-3.34z"/><polygon fill="#fff" points="9.65 16.4 5.8 12.55 7.2 11.15 9.65 13.6 16.8 6.45 18.2 7.85"/></svg></b><p>সকাল ৮টা থেকে রাত ১২টা</p></span>
+    </a>
+  </section>
+</main>
+
+<!-- WEEKLY LITE PAGE -->
+<main class="wrap" id="wlView" hidden>
+  <button class="pv-back" type="button" id="wlBack"><svg class="i"><use href="#arr"/></svg>Back</button>
+
+  <section class="pv-hero">
+    <div class="pv-img"><div class="thumb ph"><img src="WEEKLY LITE.jpg" alt="Weekly Lite"></div></div>
+    <div class="pv-info">
+      <h1>WEEKLY LITE</h1>
+      <span class="pv-pill"><svg viewBox="0 0 24 24"><use href="#bolt"/></svg>২ সেকেন্ডে টপআপ</span>
+    </div>
+  </section>
+
+  <section class="pv-box">
+    <div class="pv-head"><span class="n">1</span><h2>Select Recharge</h2></div>
+    <div class="pv-body">
+      <div class="pk-grid" id="wlPkGrid">
+        <button type="button" class="pk" data-name="1X Weekly Lite" data-price="40"><span>1X Weekly Lite</span><b>BDT 40</b></button>
+        <button type="button" class="pk" data-name="2X Weekly Lite" data-price="80"><span>2X Weekly Lite</span><b>BDT 80</b></button>
+        <button type="button" class="pk" data-name="3X Weekly Lite" data-price="120"><span>3X Weekly Lite</span><b>BDT 120</b></button>
+        <button type="button" class="pk" data-name="5X Weekly Lite" data-price="200"><span>5X Weekly Lite</span><b>BDT 200</b></button>
+      </div>
+      <a class="how" id="wlHow" href="#"><svg class="i"><use href="#ext"/></svg><span>কিভাবে অর্ডার করবেন?</span><svg class="i ar"><use href="#arr"/></svg></a>
+    </div>
+  </section>
+
+  <section class="pv-box">
+    <div class="pv-head"><span class="n">2</span><h2>Account Info</h2></div>
+    <div class="pv-body">
+      <label class="lbl" for="wlInp">এখানে গেমের আইডি কোড দিন</label>
+      <input class="inp" id="wlInp" type="text" inputmode="numeric" autocomplete="off" placeholder="এখানে গেমের আইডি কোড দিন">
+      <button class="btn" type="button" id="wlChk">আপনার গেম আইডির নাম চেক করুন</button>
+      <div class="pname" id="wlPname"></div>
+    </div>
+  </section>
+
+  <section class="pv-box">
+    <div class="pv-head"><span class="n">3</span><h2>Select one option</h2></div>
+    <div class="pv-body">
+      <div class="po-grid" id="wlPo">
+        <div role="button" tabindex="0" class="po on" data-pay="Wallet Pay">
+          <div class="pbx"><img src="wallet.jpg" alt="" onerror="this.style.display='none'"></div>
+          <div class="pft">Wallet Pay</div>
+        </div>
+        <div role="button" tabindex="0" class="po" data-pay="Instant Pay">
+          <div class="pbx"><img src="andmoney.jpg" alt="" onerror="this.style.display='none'"></div>
+          <div class="pft">Instant Pay</div>
+        </div>
+      </div>
+
+      <div class="bal" id="wlBalRow" style="display:none">
+        <svg class="i"><use href="#info"/></svg>
+        <span>আপনার অ্যাকাউন্ট ব্যালেন্স <b>৳ <em id="wlBal">0.00</em></b></span>
+        <button type="button" class="rf" id="wlRf" aria-label="Refresh"><svg class="i"><use href="#refresh"/></svg></button>
+      </div>
+      <p class="hint need"><svg class="i"><use href="#info"/></svg><span>প্রোডাক্ট কিনতে আপনার প্রয়োজন <b id="wlNeed">0</b> ৳ ।</span></p>
+      <p class="hint warnx" id="wlLoginWarn"><svg class="i"><use href="#info"/></svg><span>Please Login To Purchase</span></p>
+      <a class="btn login" id="wlBuy" href="#">Login</a>
+    </div>
+  </section>
+
+  <section class="pv-box rules">
+    <div class="pv-head rh"><svg class="i"><use href="#doc"/></svg><h2>Rules &amp; Conditions</h2></div>
+    <div class="pv-body">
+      <ul class="rl">
+        <li>সঠিক প্লেয়ার আইডি দিয়ে অর্ডার করুন। ভুল আইডিতে টপআপ হয়ে গেলে কর্তৃপক্ষ দায়ী থাকবে না।</li>
+        <li>অর্ডার করার আগে আইডির নাম চেক করে নিন।</li>
+        <li>টপআপ সম্পন্ন হতে সাধারণত ২ সেকেন্ড থেকে কয়েক মিনিট সময় লাগতে পারে।</li>
+        <li>একবার অর্ডার সাবমিট করার পর বাতিল বা রিফান্ড করা হয় না।</li>
+        <li>যেকোনো সমস্যায় অর্ডারের স্ক্রিনশট সহ টেলিগ্রামে যোগাযোগ করুন।</li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="pv-contact">
+    <h2>Contact Us</h2>
+    <a class="pv-help" href="#" data-link="telegram-channel">
+      <span class="ti"><svg class="f"><use href="#tg"/></svg></span>
+      <span><b>Telegram HelpLine <svg class="vb" viewBox="0 0 24 24"><path fill="#2979ff" d="M22.25 12c0-1.43-.88-2.67-2.19-3.34.46-1.39.2-2.9-.81-3.91s-2.52-1.27-3.91-.81c-.67-1.31-1.91-2.19-3.34-2.19s-2.67.88-3.34 2.19c-1.39-.46-2.9-.2-3.91.81s-1.27 2.52-.81 3.91C2.63 9.33 1.75 10.57 1.75 12s.88 2.67 2.19 3.34c-.46 1.39-.2 2.9.81 3.91s2.52 1.27 3.91.81c.67 1.31 1.91 2.19 3.34 2.19s2.67-.88 3.34-2.19c1.39.46 2.9.2 3.91-.81s1.27-2.52.81-3.91c1.31-.67 2.19-1.91 2.19-3.34z"/><polygon fill="#fff" points="9.65 16.4 5.8 12.55 7.2 11.15 9.65 13.6 16.8 6.45 18.2 7.85"/></svg></b><p>সকাল ৮টা থেকে রাত ১২টা</p></span>
+    </a>
+  </section>
+</main>
+
+<!-- LEVEL UP PASS PAGE -->
+<main class="wrap" id="luView" hidden>
+  <button class="pv-back" type="button" id="luBack"><svg class="i"><use href="#arr"/></svg>Back</button>
+
+  <section class="pv-hero">
+    <div class="pv-img"><div class="thumb ph"><img src="LEVEL UP PASS.jpg" alt="Level Up Pass"></div></div>
+    <div class="pv-info">
+      <h1>LEVEL UP PASS</h1>
+      <span class="pv-pill"><svg viewBox="0 0 24 24"><use href="#bolt"/></svg>২ সেকেন্ডে টপআপ</span>
+    </div>
+  </section>
+
+  <section class="pv-box">
+    <div class="pv-head"><span class="n">1</span><h2>Select Recharge</h2></div>
+    <div class="pv-body">
+      <div class="pk-grid" id="luPkGrid">
+        <button type="button" class="pk" data-name="Level Up Package - Level 6" data-price="43"><span>Level Up Package - Level 6</span><b>BDT 43</b></button>
+        <button type="button" class="pk" data-name="Level Up Package - Level 10" data-price="75"><span>Level Up Package - Level 10</span><b>BDT 75</b></button>
+        <button type="button" class="pk" data-name="Level Up Package - Level 15" data-price="75"><span>Level Up Package - Level 15</span><b>BDT 75</b></button>
+        <button type="button" class="pk" data-name="Level Up Package - Level 20" data-price="75"><span>Level Up Package - Level 20</span><b>BDT 75</b></button>
+        <button type="button" class="pk" data-name="Level Up Package - Level 25" data-price="75"><span>Level Up Package - Level 25</span><b>BDT 75</b></button>
+        <button type="button" class="pk" data-name="Level Up Package - Level 30" data-price="105"><span>Level Up Package - Level 30</span><b>BDT 105</b></button>
+        <button type="button" class="pk" data-name="Full Level Up (1270 Diamond)" data-price="448"><span>Full Level Up (1270 Diamond)</span><b>BDT 448</b></button>
+      </div>
+      <a class="how" id="luHow" href="#"><svg class="i"><use href="#ext"/></svg><span>কিভাবে অর্ডার করবেন?</span><svg class="i ar"><use href="#arr"/></svg></a>
+    </div>
+  </section>
+
+  <section class="pv-box">
+    <div class="pv-head"><span class="n">2</span><h2>Account Info</h2></div>
+    <div class="pv-body">
+      <label class="lbl" for="luInp">এখানে গেমের আইডি কোড দিন</label>
+      <input class="inp" id="luInp" type="text" inputmode="numeric" autocomplete="off" placeholder="এখানে গেমের আইডি কোড দিন">
+      <button class="btn" type="button" id="luChk">আপনার গেম আইডির নাম চেক করুন</button>
+      <div class="pname" id="luPname"></div>
+    </div>
+  </section>
+
+  <section class="pv-box">
+    <div class="pv-head"><span class="n">3</span><h2>Select one option</h2></div>
+    <div class="pv-body">
+      <div class="po-grid" id="luPo">
+        <div role="button" tabindex="0" class="po on" data-pay="Wallet Pay">
+          <div class="pbx"><img src="wallet.jpg" alt="" onerror="this.style.display='none'"></div>
+          <div class="pft">Wallet Pay</div>
+        </div>
+        <div role="button" tabindex="0" class="po" data-pay="Instant Pay">
+          <div class="pbx"><img src="andmoney.jpg" alt="" onerror="this.style.display='none'"></div>
+          <div class="pft">Instant Pay</div>
+        </div>
+      </div>
+
+      <div class="bal" id="luBalRow" style="display:none">
+        <svg class="i"><use href="#info"/></svg>
+        <span>আপনার অ্যাকাউন্ট ব্যালেন্স <b>৳ <em id="luBal">0.00</em></b></span>
+        <button type="button" class="rf" id="luRf" aria-label="Refresh"><svg class="i"><use href="#refresh"/></svg></button>
+      </div>
+      <p class="hint need"><svg class="i"><use href="#info"/></svg><span>প্রোডাক্ট কিনতে আপনার প্রয়োজন <b id="luNeed">0</b> ৳ ।</span></p>
+      <p class="hint warnx" id="luLoginWarn"><svg class="i"><use href="#info"/></svg><span>Please Login To Purchase</span></p>
+      <a class="btn login" id="luBuy" href="#">Login</a>
+    </div>
+  </section>
+
+  <section class="pv-box rules">
+    <div class="pv-head rh"><svg class="i"><use href="#doc"/></svg><h2>Rules &amp; Conditions</h2></div>
+    <div class="pv-body">
+      <ul class="rl">
+        <li>সঠিক প্লেয়ার আইডি দিয়ে অর্ডার করুন। ভুল আইডিতে টপআপ হয়ে গেলে কর্তৃপক্ষ দায়ী থাকবে না।</li>
+        <li>অর্ডার করার আগে আইডির নাম চেক করে নিন।</li>
+        <li>টপআপ সম্পন্ন হতে সাধারণত ২ সেকেন্ড থেকে কয়েক মিনিট সময় লাগতে পারে।</li>
+        <li>একবার অর্ডার সাবমিট করার পর বাতিল বা রিফান্ড করা হয় না।</li>
+        <li>যেকোনো সমস্যায় অর্ডারের স্ক্রিনশট সহ টেলিগ্রামে যোগাযোগ করুন।</li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="pv-contact">
+    <h2>Contact Us</h2>
+    <a class="pv-help" href="#" data-link="telegram-channel">
+      <span class="ti"><svg class="f"><use href="#tg"/></svg></span>
+      <span><b>Telegram HelpLine <svg class="vb" viewBox="0 0 24 24"><path fill="#2979ff" d="M22.25 12c0-1.43-.88-2.67-2.19-3.34.46-1.39.2-2.9-.81-3.91s-2.52-1.27-3.91-.81c-.67-1.31-1.91-2.19-3.34-2.19s-2.67.88-3.34 2.19c-1.39-.46-2.9-.2-3.91.81s-1.27 2.52-.81 3.91C2.63 9.33 1.75 10.57 1.75 12s.88 2.67 2.19 3.34c-.46 1.39-.2 2.9.81 3.91s2.52 1.27 3.91.81c.67 1.31 1.91 2.19 3.34 2.19s2.67-.88 3.34-2.19c1.39.46 2.9.2 3.91-.81s1.27-2.52.81-3.91c1.31-.67 2.19-1.91 2.19-3.34z"/><polygon fill="#fff" points="9.65 16.4 5.8 12.55 7.2 11.15 9.65 13.6 16.8 6.45 18.2 7.85"/></svg></b><p>সকাল ৮টা থেকে রাত ১২টা</p></span>
+    </a>
+  </section>
+</main>
+
+<!-- INDONESIA SERVER PAGE -->
+<main class="wrap" id="inView" hidden>
+  <button class="pv-back" type="button" id="inBack"><svg class="i"><use href="#arr"/></svg>Back</button>
+
+  <section class="pv-hero">
+    <div class="pv-img"><div class="thumb ph"><img src="INDONESIA SERVER.jpg" alt="Indonesia Server"></div></div>
+    <div class="pv-info">
+      <h1>INDONESIA SERVER</h1>
+      <span class="pv-pill"><svg viewBox="0 0 24 24"><use href="#bolt"/></svg>২ সেকেন্ডে টপআপ</span>
+    </div>
+  </section>
+
+  <section class="pv-box">
+    <div class="pv-head"><span class="n">1</span><h2>Select Recharge</h2></div>
+    <div class="pv-body">
+      <div class="pk-grid" id="inPkGrid">
+        <button type="button" class="pk" data-name="50 Diamond (Indo)" data-price="65"><span>50 Diamond (Indo)</span><b>BDT 65</b></button>
+        <button type="button" class="pk" data-name="70 Diamond (Indo)" data-price="90"><span>70 Diamond (Indo)</span><b>BDT 90</b></button>
+        <button type="button" class="pk" data-name="100 Diamond (Indo)" data-price="130"><span>100 Diamond (Indo)</span><b>BDT 130</b></button>
+        <button type="button" class="pk" data-name="140 Diamond (Indo)" data-price="180"><span>140 Diamond (Indo)</span><b>BDT 180</b></button>
+        <button type="button" class="pk" data-name="355 Diamond (Indo)" data-price="445"><span>355 Diamond (Indo)</span><b>BDT 445</b></button>
+        <button type="button" class="pk" data-name="720 Diamond (Indo)" data-price="890"><span>720 Diamond (Indo)</span><b>BDT 890</b></button>
+        <button type="button" class="pk" data-name="7290Diamond (Indo)" data-price="8800"><span>7290Diamond (Indo)</span><b>BDT 8800</b></button>
+        <button type="button" class="pk" data-name="Weekly (Indo)" data-price="255"><span>Weekly (Indo)</span><b>BDT 255</b></button>
+        <button type="button" class="pk" data-name="Monthly (Indo)" data-price="800"><span>Monthly (Indo)</span><b>BDT 800</b></button>
+      </div>
+      <a class="how" id="inHow" href="#"><svg class="i"><use href="#ext"/></svg><span>কিভাবে অর্ডার করবেন?</span><svg class="i ar"><use href="#arr"/></svg></a>
+    </div>
+  </section>
+
+  <section class="pv-box">
+    <div class="pv-head"><span class="n">2</span><h2>Account Info</h2></div>
+    <div class="pv-body">
+      <label class="lbl" for="inInp">এখানে গেমের আইডি কোড দিন</label>
+      <input class="inp" id="inInp" type="text" inputmode="numeric" autocomplete="off" placeholder="এখানে গেমের আইডি কোড দিন">
+      <button class="btn" type="button" id="inChk">আপনার গেম আইডির নাম চেক করুন</button>
+      <div class="pname" id="inPname"></div>
+    </div>
+  </section>
+
+  <section class="pv-box">
+    <div class="pv-head"><span class="n">3</span><h2>Select one option</h2></div>
+    <div class="pv-body">
+      <div class="po-grid" id="inPo">
+        <div role="button" tabindex="0" class="po on" data-pay="Wallet Pay">
+          <div class="pbx"><img src="wallet.jpg" alt="" onerror="this.style.display='none'"></div>
+          <div class="pft">Wallet Pay</div>
+        </div>
+        <div role="button" tabindex="0" class="po" data-pay="Instant Pay">
+          <div class="pbx"><img src="andmoney.jpg" alt="" onerror="this.style.display='none'"></div>
+          <div class="pft">Instant Pay</div>
+        </div>
+      </div>
+
+      <div class="bal" id="inBalRow" style="display:none">
+        <svg class="i"><use href="#info"/></svg>
+        <span>আপনার অ্যাকাউন্ট ব্যালেন্স <b>৳ <em id="inBal">0.00</em></b></span>
+        <button type="button" class="rf" id="inRf" aria-label="Refresh"><svg class="i"><use href="#refresh"/></svg></button>
+      </div>
+      <p class="hint need"><svg class="i"><use href="#info"/></svg><span>প্রোডাক্ট কিনতে আপনার প্রয়োজন <b id="inNeed">0</b> ৳ ।</span></p>
+      <p class="hint warnx" id="inLoginWarn"><svg class="i"><use href="#info"/></svg><span>Please Login To Purchase</span></p>
+      <a class="btn login" id="inBuy" href="#">Login</a>
     </div>
   </section>
 
@@ -1291,9 +1730,13 @@ setInterval(fetchFreshAccountConfig, 15000);
   var toastEl=document.getElementById('toast'), tt;
   function toast(m){toastEl.textContent=m;toastEl.classList.add('show');clearTimeout(tt);tt=setTimeout(function(){toastEl.classList.remove('show')},2400)}
   function route(){
-    var onFF=location.hash==='#ff-likes', onUid=location.hash==='#uid-topup';
-    home.hidden=onFF||onUid; foot.hidden=onFF||onUid; ff.hidden=!onFF;
+    var onFF=location.hash==='#ff-likes', onUid=location.hash==='#uid-topup', onWm=location.hash==='#weekly-monthly', onWl=location.hash==='#weekly-lite', onLu=location.hash==='#level-up-pass', onIn=location.hash==='#indonesia-server';
+    home.hidden=onFF||onUid||onWm||onWl||onLu||onIn; foot.hidden=onFF||onUid||onWm||onWl||onLu||onIn; ff.hidden=!onFF;
     var uv=document.getElementById('uidView'); if(uv) uv.hidden=!onUid;
+    var wv=document.getElementById('wmView'); if(wv) wv.hidden=!onWm;
+    var lv=document.getElementById('wlView'); if(lv) lv.hidden=!onWl;
+    var uv2=document.getElementById('luView'); if(uv2) uv2.hidden=!onLu;
+    var uv3=document.getElementById('inView'); if(uv3) uv3.hidden=!onIn;
     window.scrollTo(0,0);
   }
   document.querySelectorAll('[data-open="ff-likes"]').forEach(function(a){
@@ -1408,6 +1851,338 @@ setInterval(fetchFreshAccountConfig, 15000);
   var inp=document.getElementById('uidInp'), pn=document.getElementById('uidPname');
   inp.addEventListener('input',function(){this.value=this.value.replace(/\D/g,'');pn.className='pname';});
   document.getElementById('uidChk').onclick=function(){
+    var uid=inp.value.trim();
+    if(uid.length<6){pn.className='pname err';pn.innerHTML='<svg class="i"><use href="#warn"/></svg>সঠিক প্লেয়ার আইডি দিন';return;}
+    // TODO: এখানে আপনার ব্যাকএন্ড/API কল বসান (প্লেয়ার নাম আনার জন্য)
+    pn.className='pname ok';
+    pn.innerHTML='<svg class="i"><use href="#chk"/></svg>আইডি: '+uid;
+  };
+  buy.addEventListener('click',function(e){
+    if(!isLoggedIn){ if(LOGIN_URL==='#')e.preventDefault(); return; }
+    e.preventDefault();
+    var uid=inp.value.trim();
+    if(!sel.name){toast('আগে একটি রিচার্জ প্যাকেজ সিলেক্ট করুন');return;}
+    if(uid.length<6){toast('সঠিক প্লেয়ার আইডি দিন');inp.focus();return;}
+    // TODO: অর্ডার সাবমিট লজিক এখানে বসান
+    toast('অর্ডার সাবমিট হচ্ছে... ('+sel.name+', '+sel.price+' টাকা, '+sel.pay+')');
+  });
+  upd();
+})();
+// ==========================================
+// 6. WEEKLY/MONTHLY PRODUCT VIEW
+// ==========================================
+(function(){
+  // লগইন সিস্টেম যুক্ত করলে এটা true করে দিন
+  var isLoggedIn=false;
+  var LOGIN_URL='#';
+
+  var BALANCE=0;          // ইউজারের ওয়ালেট ব্যালেন্স (ব্যাকএন্ড থেকে বসান)
+  var HOWTO_URL='#';      // "কিভাবে অর্ডার করবেন?" ভিডিও/গাইডের লিংক
+
+  var sel={name:'',price:0,pay:'Wallet Pay'};
+  var toastEl=document.getElementById('toast'), tt;
+  function toast(m){toastEl.textContent=m;toastEl.classList.add('show');clearTimeout(tt);tt=setTimeout(function(){toastEl.classList.remove('show')},2400)}
+
+  document.querySelectorAll('[data-open="weekly-monthly"]').forEach(function(a){
+    a.addEventListener('click',function(e){e.preventDefault();location.hash='weekly-monthly';});
+  });
+  document.getElementById('wmBack').onclick=function(){ if(history.length>1&&location.hash==='#weekly-monthly'){history.back();}else{location.hash='';} };
+
+  var buy=document.getElementById('wmBuy'), warn=document.getElementById('wmLoginWarn');
+  function upd(){
+    document.getElementById('wmNeed').textContent=sel.price;
+    document.getElementById('wmBal').textContent=BALANCE.toFixed(2);
+    if(isLoggedIn){warn.style.display='none';balRow.style.display='flex';buy.textContent='Buy Now';buy.href='#';}
+    else{warn.style.display='flex';balRow.style.display='none';buy.textContent='Login';buy.href=LOGIN_URL;}
+  }
+  var balRow=document.getElementById('wmBalRow'), rf=document.getElementById('wmRf');
+  rf.onclick=function(){
+    rf.classList.remove('spin'); void rf.offsetWidth; rf.classList.add('spin');
+    // TODO: এখানে ব্যাকএন্ড থেকে ব্যালেন্স আনুন, তারপর BALANCE সেট করে upd() কল করুন
+    upd();
+  };
+  var how=document.getElementById('wmHow');
+  how.onclick=function(e){ if(HOWTO_URL==='#') e.preventDefault(); };
+  how.href=HOWTO_URL;
+  var pks=document.querySelectorAll('#wmPkGrid .pk');
+  var pkGrid=document.getElementById('wmPkGrid');
+  function pickPk(e){
+    var b=e.target.closest ? e.target.closest('.pk') : null;
+    if(!b || !pkGrid.contains(b)) return;
+    pks.forEach(function(x){x.classList.remove('on')});
+    b.classList.add('on'); sel.name=b.dataset.name; sel.price=+b.dataset.price; upd();
+  }
+  pkGrid.addEventListener('click',pickPk);
+  // ব্যাকআপ: ব্রাউজার কখনো click ইভেন্ট হারিয়ে ফেললেও সরাসরি ট্যাপ ধরে সিলেক্ট করবে
+  (function(){
+    var sx=0, sy=0, down=false;
+    pkGrid.addEventListener('pointerdown',function(e){ down=true; sx=e.clientX; sy=e.clientY; });
+    pkGrid.addEventListener('pointercancel',function(){ down=false; });
+    pkGrid.addEventListener('pointerup',function(e){
+      if(!down) return; down=false;
+      if(Math.abs(e.clientX-sx)>10 || Math.abs(e.clientY-sy)>10) return; // স্ক্রল হলে ধরবে না
+      pickPk(e);
+    });
+  })();
+  var pos=document.querySelectorAll('#wmPo .po');
+  pos.forEach(function(b){
+    b.onclick=function(){
+      pos.forEach(function(x){x.classList.remove('on')});
+      b.classList.add('on'); sel.pay=b.dataset.pay;
+    };
+  });
+  var inp=document.getElementById('wmInp'), pn=document.getElementById('wmPname');
+  inp.addEventListener('input',function(){this.value=this.value.replace(/\D/g,'');pn.className='pname';});
+  document.getElementById('wmChk').onclick=function(){
+    var uid=inp.value.trim();
+    if(uid.length<6){pn.className='pname err';pn.innerHTML='<svg class="i"><use href="#warn"/></svg>সঠিক প্লেয়ার আইডি দিন';return;}
+    // TODO: এখানে আপনার ব্যাকএন্ড/API কল বসান (প্লেয়ার নাম আনার জন্য)
+    pn.className='pname ok';
+    pn.innerHTML='<svg class="i"><use href="#chk"/></svg>আইডি: '+uid;
+  };
+  buy.addEventListener('click',function(e){
+    if(!isLoggedIn){ if(LOGIN_URL==='#')e.preventDefault(); return; }
+    e.preventDefault();
+    var uid=inp.value.trim();
+    if(!sel.name){toast('আগে একটি রিচার্জ প্যাকেজ সিলেক্ট করুন');return;}
+    if(uid.length<6){toast('সঠিক প্লেয়ার আইডি দিন');inp.focus();return;}
+    // TODO: অর্ডার সাবমিট লজিক এখানে বসান
+    toast('অর্ডার সাবমিট হচ্ছে... ('+sel.name+', '+sel.price+' টাকা, '+sel.pay+')');
+  });
+  upd();
+})();
+// ==========================================
+// 7. WEEKLY LITE PRODUCT VIEW
+// ==========================================
+(function(){
+  // লগইন সিস্টেম যুক্ত করলে এটা true করে দিন
+  var isLoggedIn=false;
+  var LOGIN_URL='#';
+
+  var BALANCE=0;          // ইউজারের ওয়ালেট ব্যালেন্স (ব্যাকএন্ড থেকে বসান)
+  var HOWTO_URL='#';      // "কিভাবে অর্ডার করবেন?" ভিডিও/গাইডের লিংক
+
+  var sel={name:'',price:0,pay:'Wallet Pay'};
+  var toastEl=document.getElementById('toast'), tt;
+  function toast(m){toastEl.textContent=m;toastEl.classList.add('show');clearTimeout(tt);tt=setTimeout(function(){toastEl.classList.remove('show')},2400)}
+
+  document.querySelectorAll('[data-open="weekly-lite"]').forEach(function(a){
+    a.addEventListener('click',function(e){e.preventDefault();location.hash='weekly-lite';});
+  });
+  document.getElementById('wlBack').onclick=function(){ if(history.length>1&&location.hash==='#weekly-lite'){history.back();}else{location.hash='';} };
+
+  var buy=document.getElementById('wlBuy'), warn=document.getElementById('wlLoginWarn');
+  function upd(){
+    document.getElementById('wlNeed').textContent=sel.price;
+    document.getElementById('wlBal').textContent=BALANCE.toFixed(2);
+    if(isLoggedIn){warn.style.display='none';balRow.style.display='flex';buy.textContent='Buy Now';buy.href='#';}
+    else{warn.style.display='flex';balRow.style.display='none';buy.textContent='Login';buy.href=LOGIN_URL;}
+  }
+  var balRow=document.getElementById('wlBalRow'), rf=document.getElementById('wlRf');
+  rf.onclick=function(){
+    rf.classList.remove('spin'); void rf.offsetWidth; rf.classList.add('spin');
+    // TODO: এখানে ব্যাকএন্ড থেকে ব্যালেন্স আনুন, তারপর BALANCE সেট করে upd() কল করুন
+    upd();
+  };
+  var how=document.getElementById('wlHow');
+  how.onclick=function(e){ if(HOWTO_URL==='#') e.preventDefault(); };
+  how.href=HOWTO_URL;
+  var pks=document.querySelectorAll('#wlPkGrid .pk');
+  var pkGrid=document.getElementById('wlPkGrid');
+  function pickPk(e){
+    var b=e.target.closest ? e.target.closest('.pk') : null;
+    if(!b || !pkGrid.contains(b)) return;
+    pks.forEach(function(x){x.classList.remove('on')});
+    b.classList.add('on'); sel.name=b.dataset.name; sel.price=+b.dataset.price; upd();
+  }
+  pkGrid.addEventListener('click',pickPk);
+  // ব্যাকআপ: ব্রাউজার কখনো click ইভেন্ট হারিয়ে ফেললেও সরাসরি ট্যাপ ধরে সিলেক্ট করবে
+  (function(){
+    var sx=0, sy=0, down=false;
+    pkGrid.addEventListener('pointerdown',function(e){ down=true; sx=e.clientX; sy=e.clientY; });
+    pkGrid.addEventListener('pointercancel',function(){ down=false; });
+    pkGrid.addEventListener('pointerup',function(e){
+      if(!down) return; down=false;
+      if(Math.abs(e.clientX-sx)>10 || Math.abs(e.clientY-sy)>10) return; // স্ক্রল হলে ধরবে না
+      pickPk(e);
+    });
+  })();
+  var pos=document.querySelectorAll('#wlPo .po');
+  pos.forEach(function(b){
+    b.onclick=function(){
+      pos.forEach(function(x){x.classList.remove('on')});
+      b.classList.add('on'); sel.pay=b.dataset.pay;
+    };
+  });
+  var inp=document.getElementById('wlInp'), pn=document.getElementById('wlPname');
+  inp.addEventListener('input',function(){this.value=this.value.replace(/\D/g,'');pn.className='pname';});
+  document.getElementById('wlChk').onclick=function(){
+    var uid=inp.value.trim();
+    if(uid.length<6){pn.className='pname err';pn.innerHTML='<svg class="i"><use href="#warn"/></svg>সঠিক প্লেয়ার আইডি দিন';return;}
+    // TODO: এখানে আপনার ব্যাকএন্ড/API কল বসান (প্লেয়ার নাম আনার জন্য)
+    pn.className='pname ok';
+    pn.innerHTML='<svg class="i"><use href="#chk"/></svg>আইডি: '+uid;
+  };
+  buy.addEventListener('click',function(e){
+    if(!isLoggedIn){ if(LOGIN_URL==='#')e.preventDefault(); return; }
+    e.preventDefault();
+    var uid=inp.value.trim();
+    if(!sel.name){toast('আগে একটি রিচার্জ প্যাকেজ সিলেক্ট করুন');return;}
+    if(uid.length<6){toast('সঠিক প্লেয়ার আইডি দিন');inp.focus();return;}
+    // TODO: অর্ডার সাবমিট লজিক এখানে বসান
+    toast('অর্ডার সাবমিট হচ্ছে... ('+sel.name+', '+sel.price+' টাকা, '+sel.pay+')');
+  });
+  upd();
+})();
+// ==========================================
+// 8. LEVEL UP PASS PRODUCT VIEW
+// ==========================================
+(function(){
+  // লগইন সিস্টেম যুক্ত করলে এটা true করে দিন
+  var isLoggedIn=false;
+  var LOGIN_URL='#';
+
+  var BALANCE=0;          // ইউজারের ওয়ালেট ব্যালেন্স (ব্যাকএন্ড থেকে বসান)
+  var HOWTO_URL='#';      // "কিভাবে অর্ডার করবেন?" ভিডিও/গাইডের লিংক
+
+  var sel={name:'',price:0,pay:'Wallet Pay'};
+  var toastEl=document.getElementById('toast'), tt;
+  function toast(m){toastEl.textContent=m;toastEl.classList.add('show');clearTimeout(tt);tt=setTimeout(function(){toastEl.classList.remove('show')},2400)}
+
+  document.querySelectorAll('[data-open="level-up-pass"]').forEach(function(a){
+    a.addEventListener('click',function(e){e.preventDefault();location.hash='level-up-pass';});
+  });
+  document.getElementById('luBack').onclick=function(){ if(history.length>1&&location.hash==='#level-up-pass'){history.back();}else{location.hash='';} };
+
+  var buy=document.getElementById('luBuy'), warn=document.getElementById('luLoginWarn');
+  function upd(){
+    document.getElementById('luNeed').textContent=sel.price;
+    document.getElementById('luBal').textContent=BALANCE.toFixed(2);
+    if(isLoggedIn){warn.style.display='none';balRow.style.display='flex';buy.textContent='Buy Now';buy.href='#';}
+    else{warn.style.display='flex';balRow.style.display='none';buy.textContent='Login';buy.href=LOGIN_URL;}
+  }
+  var balRow=document.getElementById('luBalRow'), rf=document.getElementById('luRf');
+  rf.onclick=function(){
+    rf.classList.remove('spin'); void rf.offsetWidth; rf.classList.add('spin');
+    // TODO: এখানে ব্যাকএন্ড থেকে ব্যালেন্স আনুন, তারপর BALANCE সেট করে upd() কল করুন
+    upd();
+  };
+  var how=document.getElementById('luHow');
+  how.onclick=function(e){ if(HOWTO_URL==='#') e.preventDefault(); };
+  how.href=HOWTO_URL;
+  var pks=document.querySelectorAll('#luPkGrid .pk');
+  var pkGrid=document.getElementById('luPkGrid');
+  function pickPk(e){
+    var b=e.target.closest ? e.target.closest('.pk') : null;
+    if(!b || !pkGrid.contains(b)) return;
+    pks.forEach(function(x){x.classList.remove('on')});
+    b.classList.add('on'); sel.name=b.dataset.name; sel.price=+b.dataset.price; upd();
+  }
+  pkGrid.addEventListener('click',pickPk);
+  // ব্যাকআপ: ব্রাউজার কখনো click ইভেন্ট হারিয়ে ফেললেও সরাসরি ট্যাপ ধরে সিলেক্ট করবে
+  (function(){
+    var sx=0, sy=0, down=false;
+    pkGrid.addEventListener('pointerdown',function(e){ down=true; sx=e.clientX; sy=e.clientY; });
+    pkGrid.addEventListener('pointercancel',function(){ down=false; });
+    pkGrid.addEventListener('pointerup',function(e){
+      if(!down) return; down=false;
+      if(Math.abs(e.clientX-sx)>10 || Math.abs(e.clientY-sy)>10) return; // স্ক্রল হলে ধরবে না
+      pickPk(e);
+    });
+  })();
+  var pos=document.querySelectorAll('#luPo .po');
+  pos.forEach(function(b){
+    b.onclick=function(){
+      pos.forEach(function(x){x.classList.remove('on')});
+      b.classList.add('on'); sel.pay=b.dataset.pay;
+    };
+  });
+  var inp=document.getElementById('luInp'), pn=document.getElementById('luPname');
+  inp.addEventListener('input',function(){this.value=this.value.replace(/\D/g,'');pn.className='pname';});
+  document.getElementById('luChk').onclick=function(){
+    var uid=inp.value.trim();
+    if(uid.length<6){pn.className='pname err';pn.innerHTML='<svg class="i"><use href="#warn"/></svg>সঠিক প্লেয়ার আইডি দিন';return;}
+    // TODO: এখানে আপনার ব্যাকএন্ড/API কল বসান (প্লেয়ার নাম আনার জন্য)
+    pn.className='pname ok';
+    pn.innerHTML='<svg class="i"><use href="#chk"/></svg>আইডি: '+uid;
+  };
+  buy.addEventListener('click',function(e){
+    if(!isLoggedIn){ if(LOGIN_URL==='#')e.preventDefault(); return; }
+    e.preventDefault();
+    var uid=inp.value.trim();
+    if(!sel.name){toast('আগে একটি রিচার্জ প্যাকেজ সিলেক্ট করুন');return;}
+    if(uid.length<6){toast('সঠিক প্লেয়ার আইডি দিন');inp.focus();return;}
+    // TODO: অর্ডার সাবমিট লজিক এখানে বসান
+    toast('অর্ডার সাবমিট হচ্ছে... ('+sel.name+', '+sel.price+' টাকা, '+sel.pay+')');
+  });
+  upd();
+})();
+// ==========================================
+// 9. INDONESIA SERVER PRODUCT VIEW
+// ==========================================
+(function(){
+  // লগইন সিস্টেম যুক্ত করলে এটা true করে দিন
+  var isLoggedIn=false;
+  var LOGIN_URL='#';
+
+  var BALANCE=0;          // ইউজারের ওয়ালেট ব্যালেন্স (ব্যাকএন্ড থেকে বসান)
+  var HOWTO_URL='#';      // "কিভাবে অর্ডার করবেন?" ভিডিও/গাইডের লিংক
+
+  var sel={name:'',price:0,pay:'Wallet Pay'};
+  var toastEl=document.getElementById('toast'), tt;
+  function toast(m){toastEl.textContent=m;toastEl.classList.add('show');clearTimeout(tt);tt=setTimeout(function(){toastEl.classList.remove('show')},2400)}
+
+  document.querySelectorAll('[data-open="indonesia-server"]').forEach(function(a){
+    a.addEventListener('click',function(e){e.preventDefault();location.hash='indonesia-server';});
+  });
+  document.getElementById('inBack').onclick=function(){ if(history.length>1&&location.hash==='#indonesia-server'){history.back();}else{location.hash='';} };
+
+  var buy=document.getElementById('inBuy'), warn=document.getElementById('inLoginWarn');
+  function upd(){
+    document.getElementById('inNeed').textContent=sel.price;
+    document.getElementById('inBal').textContent=BALANCE.toFixed(2);
+    if(isLoggedIn){warn.style.display='none';balRow.style.display='flex';buy.textContent='Buy Now';buy.href='#';}
+    else{warn.style.display='flex';balRow.style.display='none';buy.textContent='Login';buy.href=LOGIN_URL;}
+  }
+  var balRow=document.getElementById('inBalRow'), rf=document.getElementById('inRf');
+  rf.onclick=function(){
+    rf.classList.remove('spin'); void rf.offsetWidth; rf.classList.add('spin');
+    // TODO: এখানে ব্যাকএন্ড থেকে ব্যালেন্স আনুন, তারপর BALANCE সেট করে upd() কল করুন
+    upd();
+  };
+  var how=document.getElementById('inHow');
+  how.onclick=function(e){ if(HOWTO_URL==='#') e.preventDefault(); };
+  how.href=HOWTO_URL;
+  var pks=document.querySelectorAll('#inPkGrid .pk');
+  var pkGrid=document.getElementById('inPkGrid');
+  function pickPk(e){
+    var b=e.target.closest ? e.target.closest('.pk') : null;
+    if(!b || !pkGrid.contains(b)) return;
+    pks.forEach(function(x){x.classList.remove('on')});
+    b.classList.add('on'); sel.name=b.dataset.name; sel.price=+b.dataset.price; upd();
+  }
+  pkGrid.addEventListener('click',pickPk);
+  // ব্যাকআপ: ব্রাউজার কখনো click ইভেন্ট হারিয়ে ফেললেও সরাসরি ট্যাপ ধরে সিলেক্ট করবে
+  (function(){
+    var sx=0, sy=0, down=false;
+    pkGrid.addEventListener('pointerdown',function(e){ down=true; sx=e.clientX; sy=e.clientY; });
+    pkGrid.addEventListener('pointercancel',function(){ down=false; });
+    pkGrid.addEventListener('pointerup',function(e){
+      if(!down) return; down=false;
+      if(Math.abs(e.clientX-sx)>10 || Math.abs(e.clientY-sy)>10) return; // স্ক্রল হলে ধরবে না
+      pickPk(e);
+    });
+  })();
+  var pos=document.querySelectorAll('#inPo .po');
+  pos.forEach(function(b){
+    b.onclick=function(){
+      pos.forEach(function(x){x.classList.remove('on')});
+      b.classList.add('on'); sel.pay=b.dataset.pay;
+    };
+  });
+  var inp=document.getElementById('inInp'), pn=document.getElementById('inPname');
+  inp.addEventListener('input',function(){this.value=this.value.replace(/\D/g,'');pn.className='pname';});
+  document.getElementById('inChk').onclick=function(){
     var uid=inp.value.trim();
     if(uid.length<6){pn.className='pname err';pn.innerHTML='<svg class="i"><use href="#warn"/></svg>সঠিক প্লেয়ার আইডি দিন';return;}
     // TODO: এখানে আপনার ব্যাকএন্ড/API কল বসান (প্লেয়ার নাম আনার জন্য)
