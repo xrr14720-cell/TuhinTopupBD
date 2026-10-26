@@ -554,6 +554,105 @@ html,body,.pk,.po,.btn,.pay,.q,.card,.nav a,.pv-back{touch-action:manipulation}
 .acc-sup{display:flex;align-items:center;justify-content:center;gap:8px;margin:14px auto 0;padding:11px 26px;border-radius:12px;background:var(--g);color:#fff;font-size:14.5px;font-weight:700;box-shadow:0 10px 20px -10px rgba(37,99,235,.8)}
 .acc-sup svg{font-size:19px}
 .acc-sup:active{transform:scale(.97)}
+
+/* ===== MY ORDERS PAGE ===== */
+#orView{padding-left:10px;padding-right:10px;padding-bottom:130px}
+.or-top{display:flex;align-items:center;gap:16px;margin-top:18px}
+.or-menu{width:46px;height:46px;border-radius:15px;border:1px solid var(--bd);background:#fff;color:var(--tx);display:grid;place-items:center;font-size:24px;cursor:pointer;box-shadow:0 4px 12px -6px rgba(20,40,90,.2);flex-shrink:0}
+.or-menu:active{transform:scale(.95)}
+.or-top h1{font-size:26px;font-weight:800;letter-spacing:-.6px}
+.or-list{display:grid;gap:14px;margin-top:16px}
+.or-card{border-radius:22px;background:#fff;border:1px solid var(--bd);box-shadow:0 8px 22px -14px rgba(20,40,90,.3);padding:16px 16px 14px}
+.or-hd{display:flex;align-items:center;gap:12px}
+.or-ico{width:42px;height:42px;border-radius:14px;background:#e8f0ff;color:var(--v);display:grid;place-items:center;font-size:21px;flex-shrink:0}
+.or-id{flex:1;min-width:0;font-size:17px;font-weight:800;letter-spacing:-.3px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.or-st{display:inline-flex;align-items:center;gap:6px;padding:7px 13px;border-radius:99px;font-size:13px;font-weight:700;flex-shrink:0;background:#e3f9ec;color:#067647}
+.or-st svg{font-size:15px;stroke-width:2.4}
+.or-st.pending{background:#fff4dc;color:#b45309}
+.or-st.cancelled{background:#fee4e2;color:#b42318}
+.or-dates{display:grid;grid-template-columns:1fr 1fr;margin-top:14px}
+.or-dt{display:flex;align-items:center;gap:10px;min-width:0}
+.or-dt+.or-dt{padding-left:12px;border-left:1px solid var(--bd)}
+.or-dt .di{width:38px;height:38px;border-radius:12px;border:1px solid var(--bd);background:#fff;color:var(--v);display:grid;place-items:center;font-size:19px;flex-shrink:0}
+.or-dt small{display:block;font-size:11.5px;font-weight:700;color:var(--tx)}
+.or-dt b{display:block;margin-top:1px;font-size:12.5px;font-weight:800;color:var(--tx)}
+.or-dt span{display:block;margin-top:1px;font-size:11.5px;font-weight:500;color:var(--mu)}
+.or-rows{margin-top:14px;padding-top:12px;border-top:1px solid var(--bd);display:grid;gap:11px}
+.or-row{display:flex;align-items:center;gap:10px;font-size:14px}
+.or-row svg{font-size:20px;color:#64748b;flex-shrink:0}
+.or-row span{color:var(--mu);font-weight:500}
+.or-row b{margin-left:auto;text-align:right;font-weight:800;color:var(--tx);word-break:break-word}
+.or-empty{display:flex;flex-direction:column;align-items:center;text-align:center;margin-top:16px;padding:46px 20px;border-radius:22px;background:#fff;border:1px dashed #b7cdfb}
+.or-empty .eic{width:68px;height:68px;border-radius:50%;background:#e8f0ff;color:var(--v);display:grid;place-items:center;font-size:32px}
+.or-empty h3{margin-top:14px;font-size:17px;font-weight:800}
+.or-empty p{margin-top:5px;font-size:13px;color:var(--mu);line-height:1.7}
+
+/* ===== MY CODES PAGE ===== */
+#cdView{padding-left:10px;padding-right:10px;padding-bottom:130px}
+.cd-top{display:flex;align-items:center;gap:14px;margin-top:18px}
+.cd-top h1{font-size:26px;font-weight:800;letter-spacing:-.6px;flex:1;min-width:0}
+.cd-redeem{display:inline-flex;align-items:center;gap:8px;padding:11px 18px;border:0;border-radius:99px;background:var(--g);color:#fff;font-family:inherit;font-size:14px;font-weight:700;cursor:pointer;box-shadow:0 10px 22px -10px rgba(37,99,235,.85);flex-shrink:0}
+.cd-redeem svg{font-size:17px;stroke-width:2.2}
+.cd-redeem:active{transform:scale(.97)}
+.cd-list{display:grid;gap:12px;margin-top:16px}
+.cd-card{padding:14px 16px;border-radius:18px;background:#fff;border:1px solid var(--bd);box-shadow:0 8px 22px -14px rgba(20,40,90,.3)}
+.cd-card b{display:block;font-size:15px;font-weight:800}
+.cd-card code{display:block;margin-top:6px;font-size:14px;font-weight:700;letter-spacing:.5px;color:var(--v);word-break:break-all}
+.cd-empty{display:flex;flex-direction:column;align-items:center;text-align:center;margin-top:16px;padding:40px 20px;border-radius:30px;background:#fff;border:1px solid var(--bd);box-shadow:0 8px 22px -14px rgba(20,40,90,.25)}
+.cd-empty h3{font-size:20px;font-weight:600;color:#2b3345}
+.cd-empty .cd-order{display:inline-flex;align-items:center;justify-content:center;margin-top:22px;padding:14px 34px;border-radius:99px;background:var(--g);color:#fff;font-size:17px;font-weight:700;letter-spacing:.3px;box-shadow:0 10px 22px -10px rgba(37,99,235,.85)}
+.cd-empty .cd-order:active{transform:scale(.97)}
+
+/* ===== MY ACCOUNT (PROFILE) PAGE ===== */
+#acView{padding-left:10px;padding-right:10px;padding-bottom:130px}
+.ac-hero{position:relative;margin-top:16px;border-radius:30px;overflow:hidden;background:#fff;border:1px solid var(--bd);box-shadow:0 18px 40px -24px rgba(20,40,90,.45)}
+.ac-cover{position:relative;height:112px;background:linear-gradient(135deg,#60a5fa 0%,#2563eb 52%,#1e3a8a 100%);overflow:hidden}
+.ac-cover:before,.ac-cover:after{content:"";position:absolute;border-radius:50%;background:rgba(255,255,255,.12)}
+.ac-cover:before{width:180px;height:180px;right:-50px;top:-80px}
+.ac-cover:after{width:120px;height:120px;left:-40px;bottom:-70px;background:rgba(255,255,255,.09)}
+.ac-body{padding:0 16px 20px;text-align:center}
+.ac-av{position:relative;width:104px;height:104px;margin:-54px auto 0;border-radius:50%;padding:4px;background:#fff;box-shadow:0 12px 26px -10px rgba(15,23,42,.5)}
+.ac-av .in{width:100%;height:100%;border-radius:50%;overflow:hidden;background:linear-gradient(135deg,#dbeafe,#eff6ff);display:grid;place-items:center;color:var(--v);font-size:46px}
+.ac-av img{width:100%;height:100%;object-fit:cover;display:block}
+.ac-av .dot{position:absolute;right:5px;bottom:6px;width:20px;height:20px;border-radius:50%;background:#22c55e;border:3px solid #fff}
+.ac-nm{display:flex;align-items:center;justify-content:center;flex-wrap:wrap;gap:8px;margin-top:14px}
+.ac-nm h1{font-size:23px;font-weight:800;letter-spacing:-.5px;color:#0b1330;overflow-wrap:anywhere}
+.ac-vf{display:inline-flex;align-items:center;gap:5px;padding:5px 11px;border-radius:99px;background:#e6f7ed;border:1px solid #bfe8cf;color:#15803d;font-size:12px;font-weight:700}
+.ac-vf svg{width:14px;height:14px;stroke-width:2.4}
+.ac-mail{margin-top:4px;font-size:13px;color:var(--mu);overflow-wrap:anywhere}
+.ac-pin{display:inline-flex;align-items:center;gap:8px;margin-top:14px;padding:8px 8px 8px 14px;border-radius:99px;background:#f1f5fd;border:1px solid var(--bd);font-size:13px;font-weight:600;color:#475569}
+.ac-pin svg{font-size:16px;color:var(--v)}
+.ac-pin b{color:#0b1330;font-weight:800;letter-spacing:.6px}
+.ac-cp{width:30px;height:30px;border:0;border-radius:50%;background:#fff;color:var(--v);display:grid;place-items:center;font-size:15px;cursor:pointer;box-shadow:0 2px 6px -2px rgba(20,40,90,.3)}
+.ac-cp:active{transform:scale(.9)}
+.ac-wal{position:relative;margin-top:14px;padding:20px 18px 18px;border-radius:28px;color:#fff;overflow:hidden;background:linear-gradient(135deg,#1d4ed8 0%,#1e3a8a 60%,#0f1b3d 100%);box-shadow:0 20px 38px -20px rgba(29,78,216,.85)}
+.ac-wal:before{content:"";position:absolute;right:-60px;top:-70px;width:200px;height:200px;border-radius:50%;background:rgba(255,255,255,.08)}
+.ac-wal:after{content:"";position:absolute;left:-40px;bottom:-80px;width:160px;height:160px;border-radius:50%;background:rgba(96,165,250,.16)}
+.ac-wal>*{position:relative;z-index:1}
+.ac-wh{display:flex;align-items:center;justify-content:space-between}
+.ac-wh span{display:inline-flex;align-items:center;gap:8px;font-size:14px;font-weight:600;color:rgba(255,255,255,.82)}
+.ac-wh span svg{font-size:19px}
+.ac-rf{width:38px;height:38px;border:1px solid rgba(255,255,255,.25);border-radius:50%;background:rgba(255,255,255,.14);color:#fff;display:grid;place-items:center;font-size:18px;cursor:pointer}
+.ac-rf:active{transform:scale(.92)}
+.ac-rf.spin svg{animation:rfs .6s linear}
+.ac-bal{display:flex;align-items:baseline;gap:8px;margin-top:16px}
+.ac-bal small{font-size:22px;font-weight:600;color:rgba(255,255,255,.8)}
+.ac-bal b{font-size:42px;font-weight:800;letter-spacing:-1px;line-height:1}
+.ac-add{display:flex;align-items:center;justify-content:center;gap:8px;width:100%;height:48px;margin-top:18px;border:0;border-radius:15px;background:#fff;color:#1d4ed8;font-family:inherit;font-size:15.5px;font-weight:800;cursor:pointer;box-shadow:0 10px 20px -10px rgba(0,0,0,.45)}
+.ac-add svg{font-size:19px;stroke-width:2.4}
+.ac-add:active{transform:scale(.98)}
+.ac-stats{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:12px}
+.ac-st{padding:14px 12px;border-radius:20px;background:#fff;border:1px solid var(--bd);text-align:center;box-shadow:0 8px 20px -16px rgba(20,40,90,.4)}
+.ac-st b{display:block;font-size:22px;font-weight:800;color:#0b1330}
+.ac-st span{display:block;margin-top:2px;font-size:12.5px;font-weight:600;color:var(--mu)}
+.ac-menu{margin-top:12px;border-radius:22px;background:#fff;border:1px solid var(--bd);overflow:hidden;box-shadow:0 8px 20px -16px rgba(20,40,90,.4)}
+.ac-mi{display:flex;align-items:center;gap:12px;width:100%;padding:14px 14px;border:0;background:#fff;font-family:inherit;font-size:14.5px;font-weight:700;color:var(--tx);text-align:left;cursor:pointer;transition:.15s}
+.ac-mi+.ac-mi{border-top:1px solid var(--bd)}
+.ac-mi:active{background:#eff5ff}
+.ac-mi .mi{width:36px;height:36px;border-radius:12px;background:#e8f0ff;color:var(--v);display:grid;place-items:center;font-size:19px;flex-shrink:0}
+.ac-mi .go{margin-left:auto;color:#94a3b8;font-size:17px}
+.ac-mi.out{color:#b42318}
+.ac-mi.out .mi{background:#fee4e2;color:#b42318}
 </style>
 </head>
 <body>
@@ -588,6 +687,7 @@ html,body,.pk,.po,.btn,.pay,.q,.card,.nav a,.pv-back{touch-action:manipulation}
 <symbol id="a-list" viewBox="0 0 24 24"><path d="M9 6h12M9 12h12M9 18h12"/><path d="M3.500 6h.01M3.500 12h.01M3.500 18h.01" stroke-width="2.600"/></symbol>
 <symbol id="a-addm" viewBox="0 0 24 24"><path d="M5 2v6M2 5h6"/><path d="M5 11v8a2 2 0 0 0 2 2h11a2 2 0 0 0 2-2v-7a2 2 0 0 0-2-2h-6"/><rect x="12" y="13" width="5" height="4" rx="1"/></symbol>
 <symbol id="a-power" viewBox="0 0 24 24"><path d="M12 3v8"/><path d="M6.500 6.500a8 8 0 1 0 11 0"/></symbol>
+<symbol id="acstar" viewBox="0 0 24 24"><path d="M12 2.5l2.9 6 6.6.9-4.8 4.6 1.2 6.5L12 17.4l-5.9 3.1 1.2-6.5L2.5 9.4l6.6-.9z"/></symbol>
 <symbol id="a-in" viewBox="0 0 24 24"><path d="M15 3h4a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2h-4"/><path d="M10 17l5-5-5-5M15 12H3"/></symbol>
 </svg>
 
@@ -1119,6 +1219,65 @@ html,body,.pk,.po,.btn,.pay,.q,.card,.nav a,.pv-back{touch-action:manipulation}
       <span><b>Telegram HelpLine <svg class="vb" viewBox="0 0 24 24"><path fill="#2979ff" d="M22.25 12c0-1.43-.88-2.67-2.19-3.34.46-1.39.2-2.9-.81-3.91s-2.52-1.27-3.91-.81c-.67-1.31-1.91-2.19-3.34-2.19s-2.67.88-3.34 2.19c-1.39-.46-2.9-.2-3.91.81s-1.27 2.52-.81 3.91C2.63 9.33 1.75 10.57 1.75 12s.88 2.67 2.19 3.34c-.46 1.39-.2 2.9.81 3.91s2.52 1.27 3.91.81c.67 1.31 1.91 2.19 3.34 2.19s2.67-.88 3.34-2.19c1.39.46 2.9.2 3.91-.81s1.27-2.52.81-3.91c1.31-.67 2.19-1.91 2.19-3.34z"/><polygon fill="#fff" points="9.65 16.4 5.8 12.55 7.2 11.15 9.65 13.6 16.8 6.45 18.2 7.85"/></svg></b><p>সকাল ৮টা থেকে রাত ১২টা</p></span>
     </a>
   </section>
+</main>
+
+<!-- MY ORDERS PAGE -->
+<main class="wrap" id="orView" hidden>
+  <div class="or-top">
+    <button class="or-menu" type="button" id="orMenu" aria-label="Menu"><svg class="i"><use href="#a-list"/></svg></button>
+    <h1>My Orders</h1>
+  </div>
+  <div class="or-list" id="orList"></div>
+  <div class="or-empty" id="orEmpty">
+    <span class="eic"><svg class="i"><use href="#bag"/></svg></span>
+    <h3>কোনো অর্ডার নেই</h3>
+    <p>আপনার করা অর্ডারগুলো এখানে দেখা যাবে।</p>
+  </div>
+</main>
+
+<!-- MY CODES PAGE -->
+<main class="wrap" id="cdView" hidden>
+  <div class="cd-top">
+    <button class="or-menu" type="button" id="cdMenu" aria-label="Menu"><svg class="i"><use href="#doc"/></svg></button>
+    <h1>My Codes</h1>
+    <button class="cd-redeem" type="button" id="cdRedeem"><svg class="i"><use href="#ext"/></svg>Redeem Code</button>
+  </div>
+  <div class="cd-list" id="cdList"></div>
+  <div class="cd-empty" id="cdEmpty">
+    <h3>No code data found !</h3>
+    <a class="cd-order" href="#" id="cdOrder">ORDER NOW</a>
+  </div>
+</main>
+
+<!-- MY ACCOUNT PAGE -->
+<main class="wrap" id="acView" hidden>
+  <section class="ac-hero">
+    <div class="ac-cover"></div>
+    <div class="ac-body">
+      <div class="ac-av"><div class="in" id="acAvatar"><svg class="i"><use href="#user"/></svg></div><span class="dot"></span></div>
+      <div class="ac-nm"><h1 id="acName">Guest</h1><span class="ac-vf" id="acVf" style="display:none"><svg class="i"><use href="#chk"/></svg>Verified</span></div>
+      <p class="ac-mail" id="acMail">লগইন করে অর্ডার করুন</p>
+      <div class="ac-pin" id="acPinBox" style="display:none"><svg class="i"><use href="#shield"/></svg>Support PIN <b id="acPin"></b><button class="ac-cp" type="button" id="acCopy" aria-label="Copy PIN"><svg class="i"><use href="#doc"/></svg></button></div>
+    </div>
+  </section>
+
+  <section class="ac-wal">
+    <div class="ac-wh"><span><svg class="i"><use href="#wal"/></svg>Wallet Balance</span><button class="ac-rf" type="button" id="acRf" aria-label="Refresh"><svg class="i"><use href="#refresh"/></svg></button></div>
+    <div class="ac-bal"><small>৳</small><b id="acBal">0</b></div>
+    <button class="ac-add" type="button" id="acAdd"><svg class="i"><use href="#plus"/></svg>Add Money</button>
+  </section>
+
+  <div class="ac-stats">
+    <div class="ac-st"><b id="acOrders">0</b><span>Total Orders</span></div>
+    <div class="ac-st"><b id="acCodes">0</b><span>Total Codes</span></div>
+  </div>
+
+  <nav class="ac-menu">
+    <button class="ac-mi" type="button" data-to="my-orders"><span class="mi"><svg class="i"><use href="#a-mark"/></svg></span>My Orders<svg class="i go"><use href="#arr"/></svg></button>
+    <button class="ac-mi" type="button" data-to="my-codes"><span class="mi"><svg class="i"><use href="#a-grid"/></svg></span>My Codes<svg class="i go"><use href="#arr"/></svg></button>
+    <a class="ac-mi" href="#" data-link="telegram-channel"><span class="mi"><svg class="i"><use href="#head"/></svg></span>Support<svg class="i go"><use href="#arr"/></svg></a>
+    <button class="ac-mi out" type="button" id="acLogout"><span class="mi"><svg class="i"><use href="#a-in"/></svg></span><span id="acLoTx">Login</span><svg class="i go"><use href="#arr"/></svg></button>
+  </nav>
 </main>
 
 <div class="toast" id="toast"></div>
@@ -1730,8 +1889,11 @@ setInterval(fetchFreshAccountConfig, 15000);
   var toastEl=document.getElementById('toast'), tt;
   function toast(m){toastEl.textContent=m;toastEl.classList.add('show');clearTimeout(tt);tt=setTimeout(function(){toastEl.classList.remove('show')},2400)}
   function route(){
-    var onFF=location.hash==='#ff-likes', onUid=location.hash==='#uid-topup', onWm=location.hash==='#weekly-monthly', onWl=location.hash==='#weekly-lite', onLu=location.hash==='#level-up-pass', onIn=location.hash==='#indonesia-server';
-    home.hidden=onFF||onUid||onWm||onWl||onLu||onIn; foot.hidden=onFF||onUid||onWm||onWl||onLu||onIn; ff.hidden=!onFF;
+    var onFF=location.hash==='#ff-likes', onUid=location.hash==='#uid-topup', onWm=location.hash==='#weekly-monthly', onWl=location.hash==='#weekly-lite', onLu=location.hash==='#level-up-pass', onIn=location.hash==='#indonesia-server', onOr=location.hash==='#my-orders', onCd=location.hash==='#my-codes', onAc=location.hash==='#account';
+    home.hidden=onFF||onUid||onWm||onWl||onLu||onIn||onOr||onCd||onAc; foot.hidden=onFF||onUid||onWm||onWl||onLu||onIn||onOr||onCd||onAc;
+    var av=document.getElementById('acView'); if(av) av.hidden=!onAc;
+    var cv=document.getElementById('cdView'); if(cv) cv.hidden=!onCd; ff.hidden=!onFF;
+    var ov=document.getElementById('orView'); if(ov) ov.hidden=!onOr;
     var uv=document.getElementById('uidView'); if(uv) uv.hidden=!onUid;
     var wv=document.getElementById('wmView'); if(wv) wv.hidden=!onWm;
     var lv=document.getElementById('wlView'); if(lv) lv.hidden=!onWl;
@@ -2199,6 +2361,259 @@ setInterval(fetchFreshAccountConfig, 15000);
     toast('অর্ডার সাবমিট হচ্ছে... ('+sel.name+', '+sel.price+' টাকা, '+sel.pay+')');
   });
   upd();
+})();
+</script>
+<script>
+// ==========================================
+// 10. MY ORDERS PAGE
+// ==========================================
+(function(){
+  var view=document.getElementById('orView'), list=document.getElementById('orList'), empty=document.getElementById('orEmpty');
+  var panel=document.getElementById('accPanel');
+  var navLinks=[].slice.call(document.querySelectorAll('nav.nav a'));
+  var navHome=navLinks[0], navOrders=navLinks[1], navAcc=navLinks[4];
+  var ICO={
+    box:'<svg class="i"><use href="#bag"/></svg>',
+    cal:'<svg class="i"><use href="#clock"/></svg>',
+    ref:'<svg class="i"><use href="#refresh"/></svg>',
+    pkg:'<svg class="i"><use href="#bag"/></svg>',
+    card:'<svg class="i"><use href="#card"/></svg>',
+    user:'<svg class="i"><use href="#user"/></svg>',
+    ok:'<svg class="i"><use href="#chk"/></svg>'
+  };
+  function esc(v){return String(v==null?'':v).replace(/[&<>"']/g,function(c){return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]})}
+  function dt(v){ // "24-09-2026 05:55:50 PM" অথবা আলাদা date/time
+    var t=esc(v||'').split(' ');
+    return {d:t[0]||'',t:t.slice(1).join(' ')};
+  }
+
+  // অর্ডারের ডাটা এভাবে পাঠান (ব্যাকএন্ড থেকে):
+  // window.renderOrders([{id:'2326868', status:'Completed', date:'24-09-2026 05:55:50 PM',
+  //   updated:'24-09-2026 05:57:26 PM', package:'MONTHLY', price:790, playerId:'3183118387'}]);
+  window.renderOrders=function(orders){
+    orders=orders||[];
+    list.innerHTML='';
+    empty.style.display=orders.length?'none':'flex';
+    orders.forEach(function(o){
+      var st=String(o.status||'Completed'), cls=/pend|process/i.test(st)?'pending':(/cancel|fail|reject/i.test(st)?'cancelled':'');
+      var a=dt(o.date), b=dt(o.updated||o.date);
+      var price=Number(o.price||0).toFixed(2);
+      var c=document.createElement('article'); c.className='or-card';
+      c.innerHTML=
+        '<div class="or-hd"><span class="or-ico">'+ICO.box+'</span><div class="or-id">Order #'+esc(o.id)+'</div>'+
+        '<span class="or-st '+cls+'">'+(cls?'':ICO.ok)+esc(st)+'</span></div>'+
+        '<div class="or-dates">'+
+          '<div class="or-dt"><span class="di">'+ICO.cal+'</span><div><small>Order Date</small><b>'+a.d+'</b><span>'+a.t+'</span></div></div>'+
+          '<div class="or-dt"><span class="di">'+ICO.ref+'</span><div><small>Updated</small><b>'+b.d+'</b><span>'+b.t+'</span></div></div>'+
+        '</div>'+
+        '<div class="or-rows">'+
+          '<div class="or-row">'+ICO.pkg+'<span>Package</span><b>'+esc(o.package)+'</b></div>'+
+          '<div class="or-row">'+ICO.card+'<span>Total Price</span><b>৳'+price+'</b></div>'+
+          '<div class="or-row">'+ICO.user+'<span>Player ID</span><b>'+esc(o.playerId)+'</b></div>'+
+        '</div>';
+      list.appendChild(c);
+    });
+  };
+  window.renderOrders([]); // এখন ফাঁকা
+
+  function closePanel(){
+    panel.classList.remove('show'); panel.setAttribute('aria-hidden','true'); document.body.style.overflow='';
+  }
+  function sync(){
+    var on=location.hash==='#my-orders';
+    if(on){ closePanel(); }
+    if(navOrders) navOrders.classList.toggle('on',on);
+    if(on){ if(navHome) navHome.classList.remove('on'); if(navAcc) navAcc.classList.remove('on'); }
+    else if(navHome && !panel.classList.contains('show') && !/^#(ff-likes|uid-topup|weekly-monthly|weekly-lite|level-up-pass|indonesia-server|my-codes)$/.test(location.hash)) navHome.classList.add('on');
+  }
+  function go(e){ e.preventDefault(); e.stopImmediatePropagation(); location.hash='my-orders'; sync(); }
+  if(navOrders) navOrders.addEventListener('click',go);
+  var accIt=document.querySelector('.acc-it[data-go="orders"]');
+  if(accIt) accIt.addEventListener('click',go,true);
+  document.getElementById('orMenu').onclick=function(){ document.getElementById('avBtn').click(); };
+  window.addEventListener('hashchange',sync);
+  sync();
+})();
+</script>
+<script>
+// ==========================================
+// 11. MY CODES PAGE
+// ==========================================
+(function(){
+  var REDEEM_URL='#'; // "Redeem Code" বাটনের লিংক/পেজ এখানে বসান
+  var list=document.getElementById('cdList'), empty=document.getElementById('cdEmpty');
+  var panel=document.getElementById('accPanel');
+  var navLinks=[].slice.call(document.querySelectorAll('nav.nav a'));
+  var navHome=navLinks[0], navCodes=navLinks[3], navAcc=navLinks[4];
+  function esc(v){return String(v==null?'':v).replace(/[&<>"']/g,function(c){return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]})}
+
+  // কোডের ডাটা এভাবে পাঠান: renderCodes([{title:'Weekly', code:'XXXX-XXXX'}])
+  window.renderCodes=function(codes){
+    codes=codes||[]; list.innerHTML='';
+    empty.style.display=codes.length?'none':'flex';
+    codes.forEach(function(c){
+      var d=document.createElement('div'); d.className='cd-card';
+      d.innerHTML='<b>'+esc(c.title)+'</b><code>'+esc(c.code)+'</code>';
+      list.appendChild(d);
+    });
+  };
+  window.renderCodes([]);
+
+  function sync(){
+    var on=location.hash==='#my-codes';
+    if(on){ panel.classList.remove('show'); panel.setAttribute('aria-hidden','true'); document.body.style.overflow=''; }
+    if(navCodes) navCodes.classList.toggle('on',on);
+    if(on){ [navHome,navAcc,navLinks[1]].forEach(function(n){ if(n) n.classList.remove('on'); }); }
+  }
+  function go(e){ e.preventDefault(); e.stopImmediatePropagation(); location.hash='my-codes'; sync(); }
+  if(navCodes) navCodes.addEventListener('click',go);
+  var accIt=document.querySelector('.acc-it[data-go="codes"]');
+  if(accIt) accIt.addEventListener('click',go,true);
+  document.getElementById('cdMenu').onclick=function(){ document.getElementById('avBtn').click(); };
+  document.getElementById('cdOrder').onclick=function(e){ e.preventDefault(); location.hash=''; if(navHome) navHome.classList.add('on'); };
+  document.getElementById('cdRedeem').onclick=function(){
+    if(REDEEM_URL && REDEEM_URL!=='#'){ location.href=REDEEM_URL; return; }
+    var t=document.getElementById('toast'); t.textContent='Redeem Code পেজ শীঘ্রই আসছে'; t.classList.add('show'); setTimeout(function(){t.classList.remove('show')},2400);
+  };
+  window.addEventListener('hashchange',sync);
+  sync();
+})();
+</script>
+<script>
+// ==========================================
+// 12. MY ACCOUNT (PROFILE) PAGE
+// ==========================================
+(function(){
+  var panel=document.getElementById('accPanel');
+  var navLinks=[].slice.call(document.querySelectorAll('nav.nav a'));
+  var ADD_MONEY_URL='#'; // "Add Money" বাটনের পেজের লিংক এখানে বসান
+  function $(id){return document.getElementById(id)}
+  function toast(m){var t=$('toast'); t.textContent=m; t.classList.add('show'); clearTimeout(toast.t); toast.t=setTimeout(function(){t.classList.remove('show')},2200);}
+
+  // প্রোফাইলের তথ্য এভাবে পাঠান (লগইন/ব্যাকএন্ড থেকে):
+  // setProfile({loggedIn:true, name:'MD EACIN', email:'a@b.com', supportPin:'2587919', verified:true,
+  //             balance:0, orders:0, codes:0, avatar:'ছবির লিংক'})
+  window.setProfile=function(p){
+    p=p||{};
+    $('acName').textContent=p.name||'Guest';
+    $('acMail').textContent=p.email||(p.loggedIn?'':'লগইন করে অর্ডার করুন');
+    $('acMail').style.display=$('acMail').textContent?'block':'none';
+    $('acVf').style.display=p.verified?'inline-flex':'none';
+    $('acPinBox').style.display=p.supportPin?'inline-flex':'none';
+    $('acPin').textContent=p.supportPin||'';
+    $('acLoTx').textContent=p.loggedIn?'Logout':'Login';
+    var bal=(p.balance==null?0:p.balance);
+    $('acBal').textContent=bal;
+    $('acOrders').textContent=p.orders||0;
+    $('acCodes').textContent=p.codes||0;
+    var w=document.querySelector('.wallet'); if(w&&w.lastChild) w.lastChild.textContent=bal+'৳';
+    if(p.avatar){
+      $('acAvatar').innerHTML=''; var im=document.createElement('img'); im.src=p.avatar; im.alt='Profile'; $('acAvatar').appendChild(im);
+      var small=document.querySelector('#avBtn .av-inner'); if(small){ small.innerHTML=''; var i2=document.createElement('img'); i2.src=p.avatar; i2.alt='Profile'; i2.style.cssText='width:100%;height:100%;border-radius:50%;object-fit:cover'; small.appendChild(i2); }
+    }
+  };
+  window.setProfile({});
+
+  $('acRf').onclick=function(){
+    var b=this; b.classList.remove('spin'); void b.offsetWidth; b.classList.add('spin');
+    if(typeof window.onRefreshBalance==='function') window.onRefreshBalance(); // ব্যাকএন্ড থেকে ব্যালেন্স এনে setProfile কল করুন
+  };
+  $('acAdd').onclick=function(){
+    if(ADD_MONEY_URL && ADD_MONEY_URL!=='#'){ location.href=ADD_MONEY_URL; return; }
+    toast('Add Money পেজ শীঘ্রই আসছে');
+  };
+  $('acCopy').onclick=function(){
+    var v=$('acPin').textContent;
+    if(navigator.clipboard&&v){ navigator.clipboard.writeText(v).then(function(){toast('Support PIN কপি হয়েছে')},function(){toast(v)}); }
+    else toast(v);
+  };
+  document.querySelectorAll('#acView .ac-mi[data-to]').forEach(function(b){
+    b.onclick=function(){ location.hash=b.getAttribute('data-to'); };
+  });
+  $('acLogout').onclick=function(){ $('accLo').click(); };
+
+  // নিচের নেভের হাইলাইট: পেজ অনুযায়ী ঠিক রাখা
+  function applyNav(){
+    var map={'#my-orders':1,'#my-codes':3,'#account':4};
+    var idx = panel.classList.contains('show') ? 4 : (map[location.hash]!=null ? map[location.hash] : 0);
+    [0,1,3,4].forEach(function(k){ if(navLinks[k]) navLinks[k].classList.toggle('on',k===idx); });
+  }
+  function sync(){
+    if(location.hash==='#account'){ panel.classList.remove('show'); panel.setAttribute('aria-hidden','true'); document.body.style.overflow=''; }
+    applyNav();
+  }
+  function go(e){ e.preventDefault(); e.stopImmediatePropagation(); location.hash='account'; sync(); }
+  if(navLinks[4]) navLinks[4].addEventListener('click',go,true);
+  var accIt=document.querySelector('.acc-it[data-go="account"]');
+  if(accIt) accIt.addEventListener('click',go,true);
+  new MutationObserver(applyNav).observe(panel,{attributes:true,attributeFilter:['class']});
+  window.addEventListener('hashchange',function(){ setTimeout(sync,0); });
+  sync();
+})();
+</script>
+<script>
+// ==========================================
+// 13. FREE FIRE PLAYER NAME CHECK (API)
+// ==========================================
+(function(){
+  var API_URL='https://auraffxserverinfocheckerapi.onrender.com/api/player?uid=';
+  var TIMEOUT_MS=60000; // Render সার্ভার ঘুমিয়ে থাকলে প্রথমবার দেরি হতে পারে
+
+  // প্রতিটি প্রোডাক্ট পেজের: [চেক বাটন, আইডি ইনপুট, রেজাল্ট বক্স]
+  var PAGES=[
+    ['chkBtn','uid','pname'],
+    ['uidChk','uidInp','uidPname'],
+    ['wmChk','wmInp','wmPname'],
+    ['wlChk','wlInp','wlPname'],
+    ['luChk','luInp','luPname'],
+    ['inChk','inInp','inPname']
+  ];
+  var LABEL='আপনার গেম আইডির নাম চেক করুন';
+
+  function icon(id){ var n='http://www.w3.org/2000/svg';
+    var svg=document.createElementNS(n,'svg'); svg.setAttribute('class','i');
+    var u=document.createElementNS(n,'use'); u.setAttribute('href','#'+id); svg.appendChild(u); return svg; }
+  function show(box,type,text,iconId){
+    box.className='pname '+type; box.textContent='';
+    box.appendChild(icon(iconId)); box.appendChild(document.createTextNode(text));
+  }
+  function pickName(d){
+    if(!d) return '';
+    var n=d.name || (d.player&&d.player.name) || (d.raw&&d.raw.name) || '';
+    n=String(n||'').trim();
+    return (n && n!=='None' && n!=='null') ? n : '';
+  }
+
+  PAGES.forEach(function(ids){
+    var btn=document.getElementById(ids[0]), inp=document.getElementById(ids[1]), box=document.getElementById(ids[2]);
+    if(!btn||!inp||!box) return;
+    var token=0;
+    inp.addEventListener('input',function(){ token++; btn.disabled=false; btn.textContent=LABEL; });
+    btn.onclick=function(){
+      var uid=inp.value.trim(), my=++token;
+      if(uid.length<6){ show(box,'err','সঠিক প্লেয়ার আইডি দিন','warn'); return; }
+      btn.disabled=true; btn.textContent='চেক করা হচ্ছে...';
+      box.className='pname'; box.textContent='';
+      var ctrl=(typeof AbortController!=='undefined')?new AbortController():null;
+      var to=setTimeout(function(){ if(ctrl) ctrl.abort(); },TIMEOUT_MS);
+      fetch(API_URL+encodeURIComponent(uid),{cache:'no-store',signal:ctrl?ctrl.signal:undefined})
+        .then(function(r){ if(!r.ok) throw new Error('http'); return r.json(); })
+        .then(function(d){
+          if(my!==token) return;
+          var name=pickName(d);
+          if(name) show(box,'ok',name,'chk');
+          else show(box,'err','এই আইডির কোনো প্লেয়ার পাওয়া যায়নি','warn');
+        })
+        .catch(function(){
+          if(my!==token) return;
+          show(box,'err','নাম চেক করা যায়নি, আবার চেষ্টা করুন','warn');
+        })
+        .then(function(){
+          clearTimeout(to);
+          if(my===token){ btn.disabled=false; btn.textContent=LABEL; }
+        });
+    };
+  });
 })();
 </script>
 </body>
