@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Lyuna Bro - Payment</title>
+<style>
+*{box-sizing:border-box}
+body{font-family:'Segoe UI',Tahoma,Geneva,Verdana,sans-serif;background:linear-gradient(135deg,#f4f4f9 0%,#e9e4f5 100%);display:flex;justify-content:center;align-items:center;min-height:100vh;margin:0;padding:20px}
+.container{background:#fff;padding:25px;border-radius:14px;box-shadow:0 8px 25px rgba(106,27,154,.15);width:100%;max-width:420px}
+.logo{font-size:24px;font-weight:bold;color:#6a1b9a;text-align:center;margin-bottom:5px;display:flex;justify-content:center;align-items:center;gap:8px}
+.logo span{font-size:30px}.subtitle{text-align:center;color:#888;font-size:13px;margin-bottom:20px}
+.form-group{margin-bottom:15px}label{display:block;margin-bottom:6px;font-weight:600;color:#333;font-size:14px}
+input,select{width:100%;padding:12px;border:1px solid #ccc;border-radius:8px;font-size:16px;outline:none}
+input:focus,select:focus{border-color:#6a1b9a}
+#paymentInfo{display:none;background:linear-gradient(135deg,#e2136e,#b00d56);color:#fff;padding:20px;border-radius:10px;margin-bottom:15px;text-align:center}
+#paymentInfo h3{margin-top:0;margin-bottom:10px;font-size:17px}
+.number-box{background:#fff;color:#e2136e;padding:12px;border-radius:6px;font-size:20px;font-weight:bold;letter-spacing:1px;margin:10px 0;display:flex;justify-content:space-between;align-items:center;gap:8px}
+.copy-btn{background:#b00d56;color:#fff;border:none;padding:8px 12px;border-radius:5px;cursor:pointer;font-size:13px}
+.pay-btn{background:linear-gradient(135deg,#6a1b9a,#8e24aa);color:#fff;border:none;padding:15px;width:100%;border-radius:8px;font-size:18px;font-weight:bold;cursor:pointer;margin-top:5px}
+.pay-btn:disabled{background:#aaa;cursor:not-allowed}
+.note{font-size:12px;color:#777;margin-top:15px;text-align:center}
+.success-msg{display:none;background:#d4edda;color:#155724;padding:15px;border-radius:8px;margin-top:15px;text-align:center;font-weight:bold;font-size:15px}
+.error-msg{display:none;background:#f8d7da;color:#721c24;padding:12px;border-radius:8px;margin-top:10px;text-align:center;font-size:14px}
+.trx-hint{font-size:12px;color:#e2136e;margin-top:5px}
+</style>
+</head>
+<body>
+<div class="container">
+<div class="logo"><span>∞</span> Lyuna Bro</div>
+<div class="subtitle">নিরাপদ ম্যানুয়াল পেমেন্ট সিস্টেম</div>
+<form id="paymentForm">
+<div class="form-group"><label for="amount">টাকার পরিমাণ (৳)</label><input type="number" id="amount" placeholder="যেমন: ৫০০" min="1" required></div>
+<div class="form-group"><label for="method">পেমেন্ট মাধ্যম সিলেক্ট করুন</label>
+<select id="method" required><option value="">-- সিলেক্ট করুন --</option><option value="bkash">📱 বিকাশ (bKash)</option><option value="nagad">📱 নগদ (Nagad)</option><option value="rocket">📱 রকেট (Rocket)</option></select></div>
+<div id="paymentInfo"><h3 id="methodTitle">বিকাশ (bKash) পেমেন্ট</h3><p>নিচের নাম্বারে টাকা Send Money করুন:</p>
+<div class="number-box"><span id="displayNumber">01763230183</span><button type="button" class="copy-btn" onclick="copyNumber()">কপি</button></div>
+<p>টাকা পাঠানোর পর নিচে TrxID লিখুন।</p></div>
+<div class="form-group" id="trxGroup" style="display:none"><label for="trxid">ট্রানজেকশন আইডি (TrxID)</label>
+<input type="text" id="trxid" placeholder="যেমন: 9F7A2B1C"><p class="trx-hint">* SMS-এ পাওয়া ট্রানজেকশন আইডি হুবহু লিখুন</p></div>
+<button type="submit" class="pay-btn" id="submitBtn">ভেরিফাই করুন</button>
+</form>
+<div id="successMsg" class="success-msg">✅ আপনার পেমেন্ট সফলভাবে জমা হয়েছে!<br><small>অ্যাডমিন যাচাই করে কনফার্ম করবে।</small></div>
+<div id="errorMsg" class="error-msg"></div>
+<p class="note">⚠️ কোনো অবস্থাতেই আপনার পিন বা OTP এখানে দেবেন না।<br>এটি একটি ম্যানুয়াল পেমেন্ট সিস্টেম।</p>
+</div>
+<script type="module">
+import { initializeApp } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-app.js";
+import { getFirestore,collection,addDoc,serverTimestamp,query,where,getDocs }
+from "https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore.js";
+
+const firebaseConfig={
+  apiKey: "AIzaSyDuAuewZrOV-OddqB-J0x47-UoJOu2wceQ",
+ authDomain: "tuhin-pay.firebaseapp.com",
+ databaseURL: "https://tuhin-pay-default-rtdb.firebaseio.com",
+ projectId: "tuhin-pay",
+ storageBucket: "tuhin-pay.firebasestorage.app",
+ messagingSenderId: "398769834504",
+ appId: "1:398769834504:web:b138750c2d8ce5943bdfbd"
+};
+const app=initializeApp(firebaseConfig),db=getFirestore(app);
+const methodSelect=document.getElementById('method');
+const paymentInfo=document.getElementById('paymentInfo');
+const trxGroup=document.getElementById('trxGroup');
+const methodTitle=document.getElementById('methodTitle');
+const displayNumber=document.getElementById('displayNumber');
+
+methodSelect.addEventListener('change',function(){
+const method=this.value;
+if(method==='bkash'){paymentInfo.style.display='block';trxGroup.style.display='block';methodTitle.innerText='📱 বিকাশ (bKash) পেমেন্ট';displayNumber.innerText='01763230183'}
+else if(method==='nagad'){paymentInfo.style.display='block';trxGroup.style.display='block';methodTitle.innerText='📱 নগদ (Nagad) পেমেন্ট';displayNumber.innerText='01616472495'}
+else if(method==='rocket'){paymentInfo.style.display='block';trxGroup.style.display='block';methodTitle.innerText='📱 রকেট (Rocket) পেমেন্ট';displayNumber.innerText='01763230183'}
+else{paymentInfo.style.display='none';trxGroup.style.display='none'}
+});
+
+window.copyNumber=()=>{
+const n=displayNumber.innerText;
+navigator.clipboard.writeText(n).then(()=>alert('✅ নাম্বার কপি হয়েছে: '+n)).catch(()=>alert('কপি করা যায়নি। ম্যানুয়ালি কপি করুন।'))
+};
+
+document.getElementById('paymentForm').addEventListener('submit',async function(e){
+e.preventDefault();
+const submitBtn=document.getElementById('submitBtn'),errorMsg=document.getElementById('errorMsg'),successMsg=document.getElementById('successMsg');
+errorMsg.style.display='none';submitBtn.disabled=true;submitBtn.innerText='যাচাই করা হচ্ছে...';
+const amount=document.getElementById('amount').value.trim(),method=methodSelect.value,trxid=document.getElementById('trxid').value.trim().toUpperCase();
+if(!amount||!method||!trxid){errorMsg.innerText='সব তথ্য সঠিকভাবে পূরণ করুন।';errorMsg.style.display='block';submitBtn.disabled=false;submitBtn.innerText='ভেরিফাই করুন';return}
+try{
+const q=query(collection(db,"payments"),where("trxid","==",trxid)),s=await getDocs(q);
+if(!s.empty){errorMsg.innerText='❌ এই ট্রানজেকশন আইডি আগে ব্যবহার করা হয়েছে।';errorMsg.style.display='block';submitBtn.disabled=false;submitBtn.innerText='ভেরিফাই করুন';return}
+await addDoc(collection(db,"payments"),{amount,method,trxid,status:"pending",createdAt:serverTimestamp()});
+document.getElementById('paymentForm').style.display='none';successMsg.style.display='block'
+}catch(error){console.error(error);errorMsg.innerText='ডেটা সেভ করতে সমস্যা হয়েছে। আবার চেষ্টা করুন।';errorMsg.style.display='block';submitBtn.disabled=false;submitBtn.innerText='ভেরিফাই করুন'}
+});
+</script>
+</body>
+</html>
